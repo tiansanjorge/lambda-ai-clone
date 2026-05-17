@@ -198,7 +198,7 @@ export default function HeroSection() {
         screenPos.x *= 2.0; // aspect compensation (canvas is ~2:1)
         screenPos.y *= -1.0;
 
-        float fov = mix(radians(20.0), radians(120.0), 0.75);
+        float fov = mix(radians(20.0), radians(120.0), 0.90);
 
         // Ray direction
         vec3 rayDir = normalize(vec3(
@@ -244,52 +244,49 @@ export default function HeroSection() {
         float scrollX = -uTime * 0.003 * 0.5 * 40.0 * 0.928;
         vec2 scrollOffset = vec2(0.0, uTime * 0.04 * 0.5 * -0.05);
 
-        vec3 finalWisps = vec3(0.0);
-
         // Each pass offset spatially → different voronoi cells → different lines
         // Color per pass: muted spectrum, dark and desaturated
         vec2 s1 = st + vec2(scrollX + 0.0,  0.0) + scrollOffset * 38.0 * 0.928;
         vec2 s2 = st + vec2(scrollX + 0.0,  0.0) + vec2(10.0) + scrollOffset * 48.0 * 0.928;
-        float pA = voronoi(s1 * aspect, 0.5 * 0.45) * 0.001 + voronoi(s2 * aspect, 0.5 * 0.50) * 0.06;
-        finalWisps += pA * vec3(0.75, 0.25, 0.25); 
-        //  
-        
-
-        // vec3(0.75, 0.25, 0.25) // Rojo desaturado
-
+        float pA = voronoi(s1 * aspect, 0.5 * 0.45) * 0.001 + voronoi(s2 * aspect, 0.5 * 0.45) * 0.14;
 
         vec2 s3 = st + vec2(scrollX + 7.0,  0.0) + scrollOffset * 38.0 * 0.928;
         vec2 s4 = st + vec2(scrollX + 7.0,  0.0) + vec2(10.0) + scrollOffset * 48.0 * 0.928;
-        float pB = voronoi(s3 * aspect, 0.5 * 0.45) * 0.001 + voronoi(s4 * aspect, 0.5 * 0.45) * 0.06;
-        finalWisps += pB *  vec3(0.35, 0.15, 0.60); // violet
-
-        
+        float pB = voronoi(s3 * aspect, 0.5 * 0.45) * 0.001 + voronoi(s4 * aspect, 0.5 * 0.45) * 0.14;
 
         vec2 s5 = st + vec2(scrollX + 14.0, 0.0) + scrollOffset * 38.0 * 0.928;
         vec2 s6 = st + vec2(scrollX + 14.0, 0.0) + vec2(10.0) + scrollOffset * 48.0 * 0.928;
-        float pC = voronoi(s5 * aspect, 0.5 * 0.45) * 0.001 + voronoi(s6 * aspect, 0.5 * 0.45) * 0.06;
-        finalWisps += pC * vec3(0.15, 0.20, 0.55); // deep blue
-// vec3(0.55, 0.12, 0.35); // magenta
+        float pC = voronoi(s5 * aspect, 0.5 * 0.45) * 0.001 + voronoi(s6 * aspect, 0.5 * 0.45) * 0.14;
 
         vec2 s7 = st + vec2(scrollX + 21.0, 0.0) + scrollOffset * 38.0 * 0.928;
         vec2 s8 = st + vec2(scrollX + 21.0, 0.0) + vec2(10.0) + scrollOffset * 48.0 * 0.928;
-        float pD = voronoi(s7 * aspect, 0.5 * 0.45) * 0.001 + voronoi(s8 * aspect, 0.5 * 0.45) * 0.06;
-        finalWisps += pD * vec3(0.25, 0.75, 0.25); // Verde desaturado
-
-        //  vec3(0.12, 0.15, 0.45); // indigo
+        float pD = voronoi(s7 * aspect, 0.5 * 0.45) * 0.001 + voronoi(s8 * aspect, 0.5 * 0.45) * 0.14;
 
         vec2 s9  = st + vec2(scrollX + 28.0, 0.0) + scrollOffset * 38.0 * 0.928;
         vec2 s10 = st + vec2(scrollX + 28.0, 0.0) + vec2(10.0) + scrollOffset * 48.0 * 0.928;
-        float pE = voronoi(s9  * aspect, 0.5 * 0.45) * 0.001 + voronoi(s10 * aspect, 0.5 * 0.45) * 0.06;
-        finalWisps += pE * vec3(0.25, 0.35, 0.75); // Azul desaturado
-        // vec3(0.10, 0.30, 0.50); // cyan/teal
+        float pE = voronoi(s9  * aspect, 0.5 * 0.45) * 0.001 + voronoi(s10 * aspect, 0.5 * 0.45) * 0.14;
 
         vec2 nebulaUV = uv + vec2(scrollX * 0.025, 0.0);
         float nebulaVal = nebula(nebulaUV * vec2(5.0, 1.5), uTime);
         float breathe = sin(uTime * 0.22) * 0.07;
         float nebulaMask = smoothstep(0.35 + breathe, 0.99 + breathe, nebulaVal);
-        float wispVisibility = mix(0.15, 1.0, nebulaMask); 
-        color += finalWisps * wispVisibility;
+        float wispVisibility = mix(0.15, 1.0, nebulaMask);
+
+        float cycleSpeed = 0.1;
+        float pA_pulse = smoothstep(0.0, 0.4, sin(uTime * cycleSpeed * 6.2831 + 0.0)  * 0.5 + 0.5);
+        float pB_pulse = smoothstep(0.0, 0.4, sin(uTime * cycleSpeed * 6.2831 + 1.26) * 0.5 + 0.5);
+        float pC_pulse = smoothstep(0.0, 0.4, sin(uTime * cycleSpeed * 6.2831 + 2.51) * 0.5 + 0.5);
+        float pD_pulse = smoothstep(0.0, 0.4, sin(uTime * cycleSpeed * 6.2831 + 3.77) * 0.5 + 0.5);
+        float pE_pulse = smoothstep(0.0, 0.4, sin(uTime * cycleSpeed * 6.2831 + 5.03) * 0.5 + 0.5);
+
+        vec3 pulsedWisps =
+          pA * vec3(0.75, 0.25, 0.25) * pA_pulse +
+          pB * vec3(0.35, 0.15, 0.60) * pB_pulse +
+          pC * vec3(0.15, 0.20, 0.55) * pC_pulse +
+          pD * vec3(0.25, 0.75, 0.25) * pD_pulse +
+          pE * vec3(0.25, 0.35, 0.75) * pE_pulse;
+
+        color += pulsedWisps * wispVisibility;
         color = clamp(color, 0.0, 1.0);
 
         // Soft glow — brighten the band center subtly
