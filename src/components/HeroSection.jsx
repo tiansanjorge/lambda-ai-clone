@@ -167,6 +167,30 @@ export default function HeroSection() {
         return total;
       }
 
+      float nebula(vec2 p, float t) {
+        float val = 0.0;
+
+        vec2 q1 = (p + vec2(t * 0.006, t * 0.003)) * 2.5;
+        vec2 i1 = floor(q1); vec2 f1 = fract(q1);
+        vec2 u1 = f1 * f1 * (3.0 - 2.0 * f1);
+        val += mix(mix(hash(i1).x, hash(i1 + vec2(1.0, 0.0)).x, u1.x),
+                   mix(hash(i1 + vec2(0.0, 1.0)).x, hash(i1 + vec2(1.0, 1.0)).x, u1.x), u1.y) * 0.5;
+
+        vec2 q2 = (p + vec2(t * -0.004, t * 0.007)) * 5.0;
+        vec2 i2 = floor(q2); vec2 f2 = fract(q2);
+        vec2 u2 = f2 * f2 * (3.0 - 2.0 * f2);
+        val += mix(mix(hash(i2).x, hash(i2 + vec2(1.0, 0.0)).x, u2.x),
+                   mix(hash(i2 + vec2(0.0, 1.0)).x, hash(i2 + vec2(1.0, 1.0)).x, u2.x), u2.y) * 0.3;
+
+        vec2 q3 = (p + vec2(t * 0.009, t * -0.005)) * 10.0;
+        vec2 i3 = floor(q3); vec2 f3 = fract(q3);
+        vec2 u3 = f3 * f3 * (3.0 - 2.0 * f3);
+        val += mix(mix(hash(i3).x, hash(i3 + vec2(1.0, 0.0)).x, u3.x),
+                   mix(hash(i3 + vec2(0.0, 1.0)).x, hash(i3 + vec2(1.0, 1.0)).x, u3.x), u3.y) * 0.2;
+
+        return val * 0.5 + 0.5;
+      }
+
       vec2 cylindricalUV(vec2 uv, vec2 mouse) {
         // Map flat UV to spherical/cylindrical projection — replicates lambda.ai projection layer
         vec2 screenPos = (uv - 0.5) * 2.0;
@@ -216,7 +240,7 @@ export default function HeroSection() {
         st *= 40.0 * 0.928;
         st *= skew;
 
-        float scrollX = -uTime * 0.005 * 0.5 * 40.0 * 0.928;
+        float scrollX = -uTime * 0.003 * 0.5 * 40.0 * 0.928;
         vec2 scrollOffset = vec2(0.0, uTime * 0.04 * 0.5 * -0.05);
 
         vec3 finalWisps = vec3(0.0);
@@ -249,7 +273,10 @@ export default function HeroSection() {
         float pE = voronoi(s9  * aspect, 0.5 * 0.38) * 0.001 + voronoi(s10 * aspect, 0.5 * 0.38) * 0.06;
         finalWisps += pE * vec3(0.10, 0.30, 0.50); // cyan/teal
 
-        color += finalWisps;
+        float nebulaVal = nebula(vUv * vec2(3.0, 2.5), uTime);
+        float nebulaMask = smoothstep(0.35, 0.70, nebulaVal);
+        float wispVisibility = mix(0.03, 1.0, nebulaMask); 
+        color += finalWisps * wispVisibility;
         color = clamp(color, 0.0, 1.0);
 
         // Soft glow — brighten the band center subtly
