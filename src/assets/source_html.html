@@ -1,0 +1,289 @@
+<!-- ============================================================
+     LAMBDA.AI — HOMEPAGE: HERO + FEATURES SECTIONS
+     Source: https://lambda.ai
+     Extracted: 2026-05-12
+
+     SECTIONS (in order):
+     1. Hero (#section-home-hero) — full-screen animated hero
+     2. Features — numbered accordion with isometric illustration
+     ============================================================ -->
+
+
+<!-- ============================================================
+     SECTION 1 — HERO
+     ============================================================ -->
+
+<section class="pt-xl pb-xl _homeHero_m4xpb_1 module-comp" id="section-home-hero">
+
+  <!-- Background animation (streaks/particles canvas) -->
+  <div aria-hidden="true">
+    <div class="_backgroundAnimation_15jea_2 hero-bg">
+      <div style="width:100%;height:100%" class="_animationContainer_15jea_14 _fadeIn_15jea_37">
+        <div style="position:relative;width:var(--unicorn-width);height:var(--unicorn-height);--unicorn-width:100%;--unicorn-height:100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Eyebrow text above heading -->
+  <p class="_eyebrow_m4xpb_37">Supercomputers for training and inference</p>
+
+  <!-- Reduced-motion fallback heading -->
+  <h1 class="h1-large _reducedMotionTitle_m4xpb_75">
+    <span>The Superintelligence <br> Cloud</span>
+  </h1>
+
+  <!-- Main animated heading -->
+  <h1 class="h1-large _heroTitle_m4xpb_78">
+    <span class="sr-only">The Superintelligence Cloud</span>
+    <span aria-hidden="true">
+      The <span class="no-wrap">Superintelligence</span>
+      <br>Cloud
+    </span>
+  </h1>
+
+  <!-- CTA buttons -->
+  <div class="container _titleContainer_m4xpb_58">
+    <div class="buttonGroup _buttonGroup_m4xpb_63" data-align="center">
+      <a href="/sign-up" class="button" aria-label="Launch GPU instance">Launch GPU instance</a>
+      <a href="/talk-to-our-team" class="button button--secondary" aria-label="Talk to our team">Talk to our team</a>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     SECTION 2 — FEATURES / ACCORDION
+
+     NOTES FOR RECONSTRUCTION:
+     - Left column: numbered accordion (01–04), item 01 open by default
+     - Right column: isometric datacenter illustration (static image or canvas)
+     - Accordion open/close uses max-height + visibility transition (NOT display)
+     - Item 01 is "locked" (data-locked="true") — cannot be closed
+     - Toggle shows "−" when open, "+" when closed
+     - Number column: "01/" "02/" "03/" "04/" — the "/" is added via CSS ::after
+     - Accordion item content uses inert="" attribute when closed
+     ============================================================ -->
+
+<section class="pt-xl pb-xl module-comp">
+  <div class="container">
+    <div class="stack--md">
+
+      <!-- Section heading -->
+      <div class="dark-mode titleBlock">
+        <div class="grid-x grid-margin-x">
+          <div class="cell small-12 medium-7">
+            <div>
+              <h2 class="h2">Built for AI. Ready for superintelligence.</h2>
+              <div class="content noContent"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accordion + illustration grid -->
+      <div class="grid-x grid-margin-x">
+
+        <!-- Left: accordion -->
+        <div class="cell small-12 medium-7">
+          <div class="accordion">
+
+            <!-- Item 01 — OPEN (data-locked: cannot be closed) -->
+            <div class="accordionItem">
+              <div class="accordionItemNumberColumn">
+                <span class="h5" aria-hidden="true">01</span>
+              </div>
+              <div class="accordionItemContentColumn">
+                <h3 class="accordionItemHeader">
+                  <button type="button" class="accordionItemHeaderButton" aria-expanded="true" data-locked="true">
+                    <span class="accordionItemTitle">You bring models. We bring the compute.</span>
+                    <span class="accordionToggle" aria-hidden="true">−</span>
+                  </button>
+                </h3>
+                <div class="accordionItemContent accordionItemContentOpen" role="region">
+                  <div class="accordionItemRich">
+                    <div>Get complete AI factories integrating high-density power, liquid cooling, and NVIDIA GPUs into one system designed for peak AI performance.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 02 — CLOSED -->
+            <div class="accordionItem">
+              <div class="accordionItemNumberColumn">
+                <span class="h5" aria-hidden="true">02</span>
+              </div>
+              <div class="accordionItemContentColumn">
+                <h3 class="accordionItemHeader">
+                  <button type="button" class="accordionItemHeaderButton" aria-expanded="false">
+                    <span class="accordionItemTitle">Your supercomputer. Your rules.</span>
+                    <span class="accordionToggle" aria-hidden="true">+</span>
+                  </button>
+                </h3>
+                <div class="accordionItemContent" role="region" inert="">
+                  <div class="accordionItemRich">
+                    <div>Accelerate every stage of your AI lifecycle. Train foundation models and serve billions of tokens.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 03 — CLOSED -->
+            <div class="accordionItem">
+              <div class="accordionItemNumberColumn">
+                <span class="h5" aria-hidden="true">03</span>
+              </div>
+              <div class="accordionItemContentColumn">
+                <h3 class="accordionItemHeader">
+                  <button type="button" class="accordionItemHeaderButton" aria-expanded="false">
+                    <span class="accordionItemTitle">Orchestration, handled.</span>
+                    <span class="accordionToggle" aria-hidden="true">+</span>
+                  </button>
+                </h3>
+                <div class="accordionItemContent" role="region" inert="">
+                  <div class="accordionItemRich">
+                    <div>Run large-scale AI workloads without the operational burden. We manage your clusters so you can focus on innovation.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 04 — CLOSED -->
+            <div class="accordionItem">
+              <div class="accordionItemNumberColumn">
+                <span class="h5" aria-hidden="true">04</span>
+              </div>
+              <div class="accordionItemContentColumn">
+                <h3 class="accordionItemHeader">
+                  <button type="button" class="accordionItemHeaderButton" aria-expanded="false">
+                    <span class="accordionItemTitle">Experts included.</span>
+                    <span class="accordionToggle" aria-hidden="true">+</span>
+                  </button>
+                </h3>
+                <div class="accordionItemContent" role="region" inert="">
+                  <div class="accordionItemRich">
+                    <div>Co-engineer your workloads with the very people building the infrastructure behind the world's most advanced models.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right: isometric datacenter illustration -->
+        <!-- Original: canvas driven by AccordionLevelAnimationIsland JS -->
+        <!-- For reconstruction: use a static image or simplified SVG -->
+        <div class="cell small-12 medium-5">
+          <div class="_animationContainer_1wr90_9">
+            <!-- Datacenter illustration goes here -->
+            <!-- Original layers (visible in screenshot):
+                 - Isometric box with 4 labeled layers:
+                   "Purpose-built datacenters" (top)
+                   "AI infrastructure"
+                   "Managed services"
+                   "Co-engineering" (bottom)
+                 - Right side labels: "AI DEVELOPERS" / "ENTERPRISE" / "SUPERINTELLIGENCE"
+                 - Dotted grid points on each layer face
+                 - Colored corner highlights (cyan/purple/white) -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="sectionBorder"></div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 3 — HARDWARE (HORIZONTAL ACCORDION)
+
+     NOTES FOR RECONSTRUCTION:
+     - 4 product cards laid out in a horizontal row
+     - Active card expands to ~46% width; inactive cards share the rest equally
+     - Card width transitions via flex-basis (0.4s ease)
+     - Product image: absolute-positioned, full card height, mix-blend-mode: luminosity when inactive, normal when active
+     - Text content anchored to bottom of card
+     - Description text: hidden (opacity 0, translateY(-20px)) on inactive, animated in on active (0.4s delay 0.5s)
+     - Bottom indicator bar: off-white (#E7E6D9) by default, purple (#6236F4) on active/hover
+     - Section background: pure black (#000000) — darker than hero (#0B0B0B)
+     - First card is active by default
+     ============================================================ -->
+
+<section class="hardwareSection">
+  <div class="hardwareInner">
+
+    <!-- Title block — two-column heading + body -->
+    <div class="hardwareTitleBlock">
+      <div class="hardwareTitleLeft">
+        <h2 class="hardwareHeading">The engines of<br>superintelligence</h2>
+      </div>
+      <div class="hardwareTitleRight">
+        <p class="hardwareSubtitle">Give your team the computational precision to train foundation models and serve inference at global scale.</p>
+      </div>
+    </div>
+
+    <!-- Horizontal accordion -->
+    <div class="hardwareAccordionItems">
+
+      <!-- Card 1 — ACTIVE by default -->
+      <button type="button" class="hardwareAccordionItem hardwareActive" aria-expanded="true">
+        <div class="hardwareAccordionImage hardwareActiveImage">
+          <img src="/images/vr200.jpg" alt="NVIDIA VR200 NVL72" width="410" height="410" class="hardwareAccordionImg">
+        </div>
+        <div class="hardwareAccordionItemInner">
+          <div class="hardwareAccordionTextContent hardwareActiveTextContent">
+            <h3 class="hardwareAccordionItemTitle">NVIDIA VR200 NVL72</h3>
+            <div class="hardwareAccordionItemRichText hardwareActiveRichText">Rack-scale systems optimized for agentic AI.</div>
+          </div>
+        </div>
+        <div class="hardwareAccordionItemIndicator hardwareActiveIndicator"></div>
+      </button>
+
+      <!-- Card 2 — INACTIVE -->
+      <button type="button" class="hardwareAccordionItem" aria-expanded="false">
+        <div class="hardwareAccordionImage">
+          <img src="/images/gb300.png" alt="NVIDIA GB300 NVL72" width="410" height="410" class="hardwareAccordionImg">
+        </div>
+        <div class="hardwareAccordionItemInner">
+          <div class="hardwareAccordionTextContent">
+            <h3 class="hardwareAccordionItemTitle">NVIDIA GB300 NVL72</h3>
+            <div class="hardwareAccordionItemRichText">Rack-scale systems optimized for AI reasoning</div>
+          </div>
+        </div>
+        <div class="hardwareAccordionItemIndicator"></div>
+      </button>
+
+      <!-- Card 3 — INACTIVE -->
+      <button type="button" class="hardwareAccordionItem" aria-expanded="false">
+        <div class="hardwareAccordionImage">
+          <img src="/images/hgx-b300.png" alt="NVIDIA HGX B300" width="410" height="410" class="hardwareAccordionImg">
+        </div>
+        <div class="hardwareAccordionItemInner">
+          <div class="hardwareAccordionTextContent">
+            <h3 class="hardwareAccordionItemTitle">NVIDIA HGX B300</h3>
+            <div class="hardwareAccordionItemRichText">Peak performance per watt for the largest training runs</div>
+          </div>
+        </div>
+        <div class="hardwareAccordionItemIndicator"></div>
+      </button>
+
+      <!-- Card 4 — INACTIVE -->
+      <button type="button" class="hardwareAccordionItem" aria-expanded="false">
+        <div class="hardwareAccordionImage">
+          <img src="/images/hgx-b200.png" alt="NVIDIA HGX B200" width="410" height="410" class="hardwareAccordionImg">
+        </div>
+        <div class="hardwareAccordionItemInner">
+          <div class="hardwareAccordionTextContent">
+            <h3 class="hardwareAccordionItemTitle">NVIDIA HGX B200</h3>
+            <div class="hardwareAccordionItemRichText">Versatile fine-tuning and inference</div>
+          </div>
+        </div>
+        <div class="hardwareAccordionItemIndicator"></div>
+      </button>
+
+    </div>
+  </div>
+</section>

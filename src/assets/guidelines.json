@@ -1,0 +1,191 @@
+{
+  "design_system": {
+    "metadata": {
+      "version": "0.1.0",
+      "project_name": "Lambda Hero + Features Sections + Hardware / Product Cards",
+      "source_url": "https://lambda.ai",
+      "sections": [
+        "Hero",
+        "Features / Accordion",
+        "Hardware / Product Cards"
+      ]
+    },
+    "profile": {
+      "brand_name": "Lambda",
+      "primary_purpose": "Two stacked homepage sections: full-screen hero with animated background, followed by 4-item interactive accordion with isometric illustration",
+      "visual_language": {
+        "style": "Dark, monochromatic, brutalist/cyberpunk",
+        "background": "Pure black (#0B0B0B)",
+        "typography": "Display headings in Suisse Intl (sans), body/UI in Suisse Intl Mono (mono), pixel accent in apkarchivr21",
+        "cta_style": "Primary (off-white bg, black text, RGB chromatic aberration shadow) and secondary (ultraviolet bg, white text)"
+      }
+    },
+    "fonts": {
+      "sans": "Suisse Intl — headings, accordion titles",
+      "mono": "Suisse Intl Mono — body text, buttons, item numbers",
+      "pixel": "apkarchivr21 — used only in hero heading letter swap animation",
+      "note": "All font files hosted on HubSpot CDN. @font-face declarations are in the CSS file"
+    },
+    "shared_colors": {
+      "background": "#0B0B0B (--color-terminal)",
+      "text_primary": "#E7E6D9 (--color-shell)",
+      "text_secondary": "#B0AFA6 (--color-neutral-300)",
+      "accent_ultraviolet": "#6236F4 (--color-ultraviolet)",
+      "divider": "#262625 (--color-neutral-800)"
+    },
+    "shared_key_css_variables": {
+      "--font-sans": "\"Suisse Intl\", Helvetica, Arial, sans-serif",
+      "--font-mono": "\"Suisse Intl Mono\", \"Courier New\", monospace",
+      "--font-pixel": "\"apkarchivr21\", monospace",
+      "--space-xl": "160px",
+      "--space-md": "80px",
+      "--space-xs": "40px",
+      "--text-7xl": "7.315rem",
+      "--text-5xl": "4.5rem",
+      "--text-2xl": "2.15rem",
+      "--leading-none": "100%",
+      "--leading-tight": "110%",
+      "--tracking-tighter": "-0.02em",
+      "--box-shadow-rgb": "0 .99px 0 0 #ff0, .99px 0 0 0 #0ff, 1.98px .99px 0 0 #0f0, 0 -.99px 0 0 #00f, -.99px 0 0 0 #f0f, -1.98px 0 0 0 #f00",
+      "--text-shadow-rgb": "0 .99px 0 #ff0, .99px 0 0 #0ff, 1.98px .99px 0 #0f0, 0 -.99px 0 #00f, -.99px 0 0 #f0f, -1.98px 0 0 #f00",
+      "--transition-snappy": "0.1s cubic-bezier(0.6, 0, 0.4, 1)"
+    },
+    "hero_section": {
+      "layout": "Full-viewport-height flex column, centered content, relative positioning for absolute background",
+      "components": {
+        "background_animation": {
+          "description": "Animated canvas effect covering the full section — study the live site to identify the animation library and asset"
+        },
+        "eyebrow_text": {
+          "text": "Supercomputers for training and inference",
+          "style": "Suisse Intl semibold, centered, ~1.25rem–1.5rem, color: shell (#E7E6D9), margin-bottom: 20px"
+        },
+        "heading": {
+          "text": "The Superintelligence Cloud",
+          "font_size_breakpoints": {
+            "base": "2.6rem",
+            "480px": "3rem",
+            "768px": "4.5rem",
+            "1024px": "6rem",
+            "1280px": "7.315rem"
+          },
+          "line_height": "100%",
+          "font_weight": "600 (semibold)",
+          "letter_spacing": "-0.02em",
+          "font_swap_animation": {
+            "description": "Specific letters in the heading periodically swap to the pixel font on a timed loop — inspect the live site to understand the timing, states, and visual behaviour"
+          }
+        },
+        "cta_buttons": {
+          "layout": "flex row, gap: 18px, justify-content: center, margin-top: 50px",
+          "button_1": {
+            "text": "Launch GPU instance",
+            "style": "Primary — off-white (#E7E6D9) bg, black text, RGB chromatic aberration box-shadow, border-radius: 0",
+            "font": "Suisse Intl Mono, uppercase, 0.875rem",
+            "padding": "17px 36px"
+          },
+          "button_2": {
+            "text": "Talk to our team",
+            "style": "Secondary — ultraviolet (#6236F4) bg, white text, no box-shadow, border-radius: 0",
+            "padding": "17px 36px"
+          }
+        }
+      }
+    },
+    "features_section": {
+      "grid": {
+        "system": "Foundation-based 12-column flex grid",
+        "container": "max-width: 1398px, margin: auto, padding-inline: 15px",
+        "columns": {
+          "accordion": "7/12 (58.33%) at 1024px+, full width on mobile",
+          "illustration": "5/12 (41.67%) at 1024px+, full width on mobile"
+        }
+      },
+      "section_heading": {
+        "text": "Built for AI. Ready for superintelligence.",
+        "font_size": "clamp(2.3rem, 6vw, 4.5rem)",
+        "font_weight": "600 (semibold)",
+        "line_height": "110%",
+        "letter_spacing": "-0.02em",
+        "color": "#E7E6D9",
+        "placement": "Above the two-column grid, spanning the left 7 columns only"
+      },
+      "accordion": {
+        "description": "4 numbered items. Item 01 open by default and locked (cannot be closed). Inspect the live site for the open/close transition approach and timing.",
+        "item_01_locked": "Cannot be closed — clicking the open item does nothing",
+        "items": [
+          {
+            "number": "01",
+            "title": "You bring models. We bring the compute.",
+            "body": "Get complete AI factories integrating high-density power, liquid cooling, and NVIDIA GPUs into one system designed for peak AI performance.",
+            "default_open": true,
+            "locked": true
+          },
+          {
+            "number": "02",
+            "title": "Your supercomputer. Your rules.",
+            "body": "Accelerate every stage of your AI lifecycle. Train foundation models and serve billions of tokens.",
+            "default_open": false
+          },
+          {
+            "number": "03",
+            "title": "Orchestration, handled.",
+            "body": "Run large-scale AI workloads without the operational burden. We manage your clusters so you can focus on innovation.",
+            "default_open": false
+          },
+          {
+            "number": "04",
+            "title": "Experts included.",
+            "body": "Co-engineer your workloads with the very people building the infrastructure behind the world's most advanced models.",
+            "default_open": false
+          }
+        ]
+      },
+      "illustration": {
+        "description": "Isometric datacenter stack — right column",
+        "visual_description": "Isometric 3D box with 4 stacked layers: 'Purpose-built datacenters', 'AI infrastructure', 'Managed services', 'Co-engineering'. Right side: vertical labels 'AI DEVELOPERS', 'ENTERPRISE', 'SUPERINTELLIGENCE'. Dotted grid on each face. Corner highlights in cyan/purple/white.",
+        "reconstruction_note": "Original is a canvas animation that advances frames on accordion click. Implement as a static SVG or image — it does not need to be animated."
+      }
+    },
+    "hardware_section": {
+      "layout": "Full-width section with pure black background (#000000 — darker than the hero). Two-column title block at top, followed by a horizontal accordion of 4 product cards.",
+      "title_block": {
+        "heading": "The engines of superintelligence",
+        "heading_font": "Suisse Intl, semibold, clamp(2.5rem, 5vw, 4.5rem), color: shell",
+        "body": "Give your team the computational precision to train foundation models and serve inference at global scale.",
+        "body_font": "Suisse Intl Mono, base size, color: shell",
+        "layout": "Two columns at 768px+: heading left (~58%), body right (~42%). Body aligns to the top of the heading with a top padding offset."
+      },
+      "horizontal_accordion": {
+        "description": "4 product cards in a horizontal row. Clicking a card expands it — inspect the live site for the expand/collapse transition approach and timing.",
+        "card_height": "610px fixed",
+        "default_active": "First card (NVIDIA VR200 NVL72) is active by default",
+        "image_behaviour": "Product image fills the card. Inactive cards render the image in grayscale  — active card shows full colour. Inspect the live site for the exact property.",
+        "text_behaviour": "Card title is always visible at the bottom. Description text is hidden on inactive cards and animates in on the active card — inspect the live site for the transition.",
+        "mobile": "Cards stack vertically on mobile. Full width, fixed minimum height. Description text always visible.",
+        "products": [
+          {
+            "title": "NVIDIA VR200 NVL72",
+            "description": "Rack-scale systems optimized for agentic AI.",
+            "image": "/images/vr200.jpg"
+          },
+          {
+            "title": "NVIDIA GB300 NVL72",
+            "description": "Rack-scale systems optimized for AI reasoning",
+            "image": "/images/gb300.png"
+          },
+          {
+            "title": "NVIDIA HGX B300",
+            "description": "Peak performance per watt for the largest training runs",
+            "image": "/images/hgx-b300.png"
+          },
+          {
+            "title": "NVIDIA HGX B200",
+            "description": "Versatile fine-tuning and inference",
+            "image": "/images/hgx-b200.png"
+          }
+        ]
+      }
+    }
+  }
+}

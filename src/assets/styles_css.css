@@ -1,0 +1,1694 @@
+/*
+   LAMBDA.AI — HOMEPAGE: HERO + FEATURES SECTIONS — Extracted CSS
+   Source: https://lambda.ai
+
+   Contains all styles for both the Hero and Features sections.
+   The :root variables and @font-face declarations are shared.
+
+   Sections:
+   1. @font-face + :root CSS variables (shared design system)
+   2. Base html/body + shared utilities
+   3. Hero section styles
+   4. Features / Accordion section styles
+*/
+/* ============================================================
+   LAMBDA.AI — HERO SECTION — Extracted CSS
+   Source: https://lambda.ai (homepage, #section-home-hero)
+   Extracted: 2026-05-12
+
+   Contains: @font-face, :root vars, base html/body, h1/.h1-large,
+   .container, .sr-only, .pt-xl/.pb-xl, .module-comp, .sectionBorder,
+   .no-wrap, .buttonGroup, .button/.button--secondary,
+   ._homeHero_m4xpb_, ._eyebrow_m4xpb_, ._heroTitle_m4xpb_,
+   ._reducedMotionTitle_m4xpb_, ._titleContainer_m4xpb_,
+   ._buttonGroup_m4xpb_, ._backgroundAnimation_15jea_,
+   ._animationContainer_15jea_, ._fadeIn_15jea_,
+   ============================================================ */
+
+/* ============================================================
+   @font-face
+   ============================================================ */
+
+@font-face {
+  font-display: swap;
+  font-family: "Suisse Intl Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntlMono-Regular.woff2) format("woff2"),
+       url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntlMono-Regular.woff) format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Suisse Intl Mono";
+  font-style: normal;
+  font-weight: 600;
+  src: url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntlMono-Bold.woff2) format("woff2"),
+       url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntlMono-Bold.woff) format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Suisse Intl";
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntl-Light.woff2) format("woff2"),
+       url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntl-Light.woff) format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Suisse Intl";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntl-Regular.woff2) format("woff2"),
+       url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntl-Regular.woff) format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Suisse Intl";
+  font-style: italic;
+  font-weight: 400;
+  src: url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntl-Italic.woff2) format("woff2"),
+       url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntl-Italic.woff) format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Suisse Intl";
+  font-style: normal;
+  font-weight: 600;
+  src: url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntl-SemiBold.woff2) format("woff2"),
+       url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntl-SemiBold.woff) format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Suisse Intl";
+  font-style: italic;
+  font-weight: 600;
+  src: url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntl-SemiBoldItalic.woff2) format("woff2"),
+       url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntl-SemiBoldItalic.woff) format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Suisse Intl";
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntl-Bold.woff2) format("woff2"),
+       url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntl-Bold.woff) format("woff");
+}
+
+@font-face {
+  ascent-override: 92%;
+  descent-override: 22%;
+  font-display: swap;
+  font-family: apkarchivr21;
+  font-style: normal;
+  font-weight: 400;
+  line-gap-override: 0%;
+  src: url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/apkarchivr21_regular-webfont.woff) format("woff");
+}
+
+/* ============================================================
+   :root — Colors
+   ============================================================ */
+
+:root {
+  --color-neutral-1000: #000000;
+  --color-neutral-900: #0b0b0b;
+  --color-neutral-800: #262625;
+  --color-neutral-800-faded: rgba(37, 37, 37, .6);
+  --color-neutral-700: #42413e;
+  --color-neutral-600: #5e5d58;
+  --color-neutral-500: #797872;
+  --color-neutral-400: #95948c;
+  --color-neutral-300: #b0afa6;
+  --color-neutral-300-light: rgba(185, 184, 174, .2);
+  --color-neutral-200: #cccbbf;
+  --color-neutral-100: #e7e6d9;
+  --color-neutral-0: #ffffff;
+  --color-ultraviolet-100: #e0d7fd;
+  --color-ultraviolet-200: #c0affb;
+  --color-ultraviolet-300: #a186f8;
+  --color-ultraviolet-400: #815ef6;
+  --color-ultraviolet-500: #6236f4;
+  --color-ultraviolet-600: #4e2bc3;
+  --color-ultraviolet-700: #3b2092;
+  --color-ultraviolet-800: #271662;
+  --color-ultraviolet-900: #140b31;
+  --color-red-100: #facccc;
+  --color-red-200: #f59999;
+  --color-red-300: #f16666;
+  --color-red-400: #ec3333;
+  --color-red-500: #e70000;
+  --color-red-600: #b90000;
+  --color-red-700: #8b0000;
+  --color-red-800: #5c0000;
+  --color-red-900: #2e0000;
+  --color-green-100: #ccfacc;
+  --color-green-200: #99f599;
+  --color-green-300: #66f066;
+  --color-green-400: #33eb33;
+  --color-green-500: #00e600;
+  --color-green-600: #00b800;
+  --color-green-700: #008a00;
+  --color-green-800: #005c00;
+  --color-green-900: #002e00;
+  --color-blue-100: #ccccf7;
+  --color-blue-200: #9999f0;
+  --color-blue-300: #6666e8;
+  --color-blue-400: #3333e1;
+  --color-blue-500: #0000d9;
+  --color-blue-600: #0000ae;
+  --color-blue-700: #000082;
+  --color-blue-800: #000057;
+  --color-blue-900: #00002b;
+  --color-cyan-100: #ccfaf7;
+  --color-cyan-200: #99f5f0;
+  --color-cyan-300: #66f0e8;
+  --color-cyan-400: #33ebe1;
+  --color-cyan-500: #00e6d9;
+  --color-cyan-600: #00b8ae;
+  --color-cyan-700: #008a82;
+  --color-cyan-800: #005c57;
+  --color-cyan-900: #002e2b;
+  --color-magenta-100: #faccf7;
+  --color-magenta-200: #f599f0;
+  --color-magenta-300: #f166e8;
+  --color-magenta-400: #ec33e1;
+  --color-magenta-500: #e700d9;
+  --color-magenta-600: #b900ae;
+  --color-magenta-700: #8b0082;
+  --color-magenta-800: #5c0057;
+  --color-magenta-900: #2e002b;
+  --color-yellow-100: #fafacc;
+  --color-yellow-200: #f5f599;
+  --color-yellow-300: #f1f066;
+  --color-yellow-400: #eceb33;
+  --color-yellow-500: #e7e600;
+  --color-yellow-600: #b9b800;
+  --color-yellow-700: #8b8a00;
+  --color-yellow-800: #5c5c00;
+  --color-yellow-900: #2e2e00;
+  /* Semantic aliases */
+  --color-shell: var(--color-neutral-100);
+  --color-terminal: var(--color-neutral-900);
+  --color-neutral: var(--color-neutral-500);
+  --color-ultraviolet: var(--color-ultraviolet-500);
+  --color-red: var(--color-red-500);
+  --color-green: var(--color-green-500);
+  --color-blue: var(--color-blue-500);
+  --color-cyan: var(--color-cyan-500);
+  --color-magenta: var(--color-magenta-500);
+  --color-yellow: var(--color-yellow-500);
+  /* Background */
+  --color-background: var(--color-terminal);
+  --color-background-gray: var(--color-neutral-800);
+  --color-background-light: var(--color-shell);
+  --color-background-brand: var(--color-ultraviolet);
+  --color-background-black: var(--color-neutral-1000);
+  /* Text */
+  --color-text-primary: var(--color-shell);
+  --color-text-primary-dark: var(--color-terminal);
+  --color-text-secondary: var(--color-neutral-300);
+  --color-text-secondary-dark: var(--color-terminal);
+  --color-code-text: var(--color-green-200);
+  /* Buttons */
+  --color-button-primary-text: var(--color-terminal);
+  --color-button-primary-background: var(--color-shell);
+  --color-button-secondary-text: var(--color-shell);
+  --color-button-secondary-background: var(--color-ultraviolet);
+  --color-button-secondary-background-hover: var(--color-ultraviolet-400);
+  --color-button-tertiary-text: var(--color-shell);
+  --color-button-tertiary-background: transparent;
+  /* Links */
+  --color-text-link: var(--color-ultraviolet-300);
+  --color-text-link-hover: var(--color-ultraviolet);
+  /* Forms */
+  --color-form-text: var(--color-shell);
+  --color-form-label: var(--color-neutral-400);
+  --color-form-border: var(--color-shell);
+  --color-select-color: var(--color-neutral-400);
+  --color-form-placeholder: var(--color-neutral-400);
+  --color-section-label: var(--color-neutral-400);
+}
+
+/* ============================================================
+   :root — Typography
+   ============================================================ */
+
+:root {
+  --font-mono: "Suisse Intl Mono", "Courier New", monospace;
+  --font-sans: "Suisse Intl", Helvetica, Arial, sans-serif;
+  --font-pixel: "apkarchivr21", monospace;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --text-2xs: .6875rem;
+  --text-xs: .75rem;
+  --text-sm: .875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2.15rem;
+  --text-3xl: 3rem;
+  --text-4xl: 3.75rem;
+  --text-5xl: 4.5rem;
+  --text-6xl: 6rem;
+  --text-7xl: 7.315rem;
+  --leading-none: 100%;
+  --leading-tight: 110%;
+  --leading-snug: 120%;
+  --leading-normal: 130%;
+  --leading-relaxed: 150%;
+  --leading-loose: 160%;
+  --tracking-tighter: -.02em;
+  --tracking-tight: -.01em;
+  --tracking-normal: 0;
+  --tracking-wide: .01em;
+  --tracking-wider: .02em;
+  --tracking-widest: .05em;
+}
+
+/* ============================================================
+   :root — Spacing
+   ============================================================ */
+
+:root {
+  --space-0: 0;
+  --space-4xs: 5px;
+  --space-3xs: 10px;
+  --space-2xs: 20px;
+  --space-xs: 40px;
+  --space-regular: 48px;
+  --space-sm: 60px;
+  --space-md: 80px;
+  --space-lg: 100px;
+  --space-xl: 160px;
+  --space-2xl: 240px;
+}
+
+/* ============================================================
+   :root — Shadows (default)
+   ============================================================ */
+
+:root {
+  --box-shadow-rgb: 0 .99px 0 0 #ff0, .99px 0 0 0 #0ff, 1.98px .99px 0 0 #0f0, 0 -.99px 0 0 #00f, -.99px 0 0 0 #f0f, -1.98px 0 0 0 #f00;
+  --text-shadow-rgb: 0 .99px 0 #ff0, .99px 0 0 #0ff, 1.98px .99px 0 #0f0, 0 -.99px 0 #00f, -.99px 0 0 #f0f, -1.98px 0 0 #f00;
+}
+
+/* Retina/high-res override (smaller shadow offset) */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  :root {
+    --box-shadow-rgb: 0 .5px 0 0 #ff0, .5px 0 0 0 #0ff, 1px .5px 0 0 #0f0, 0 -.5px 0 0 #00f, -.5px 0 0 0 #f0f, -1px 0 0 0 #f00;
+    --text-shadow-rgb: 0 .5px 0 #ff0, .5px 0 0 #0ff, 1px .5px 0 #0f0, 0 -.5px 0 #00f, -.5px 0 0 #f0f, -1px 0 0 #f00;
+  }
+}
+
+/* ============================================================
+   :root — Transitions / Easing
+   ============================================================ */
+
+:root {
+  --transition-snappy: .1s cubic-bezier(.6, 0, .4, 1);
+  --transition-smooth: .4s cubic-bezier(.6, 0, .4, 1);
+  --easing-snappy: cubic-bezier(.6, 0, .4, 1);
+  --easing-smooth: cubic-bezier(.6, 0, .4, 1);
+}
+
+/* ============================================================
+   Base — html / body
+   ============================================================ */
+
+html {
+  interpolate-size: allow-keywords;
+  box-sizing: border-box;
+  height: 100%;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  scroll-behavior: smooth;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-relaxed);
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-text-secondary);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* ============================================================
+   Typography — h1 / .h1 / .h1-large
+   ============================================================ */
+
+h1, .h1 {
+  font-family: var(--font-sans);
+  font-size: clamp(2.6rem, 8vw, var(--text-6xl));
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tighter);
+  color: var(--color-text-primary);
+  position: relative;
+}
+
+h1 span[data-variant="highlight"],
+.h1 span[data-variant="highlight"] {
+  font-family: var(--font-pixel);
+  font-weight: var(--font-weight-light);
+  color: var(--color-text-primary-dark);
+  background-color: var(--color-background-light);
+  mix-blend-mode: screen;
+  display: inline-block;
+  box-shadow: var(--box-shadow-rgb);
+}
+
+h1 span[data-variant="pixel"],
+.h1 span[data-variant="pixel"] {
+  font-family: var(--font-pixel);
+  font-weight: var(--font-weight-light);
+  display: inline-block;
+  text-shadow: var(--text-shadow-rgb);
+}
+
+h1.large, .h1-large {
+  font-size: 2.6rem;
+  line-height: var(--leading-none);
+}
+
+@media (min-width: 480px) {
+  h1.large, .h1-large {
+    font-size: var(--text-3xl);
+  }
+}
+
+@media (min-width: 768px) {
+  h1.large, .h1-large {
+    font-size: var(--text-5xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  h1.large, .h1-large {
+    font-size: var(--text-6xl);
+  }
+}
+
+@media (min-width: 1280px) {
+  h1.large, .h1-large {
+    font-size: var(--text-7xl);
+  }
+}
+
+/* ============================================================
+   Utilities — .container, .sr-only
+   ============================================================ */
+
+.container {
+  width: 100%;
+  max-width: 1398px;
+  margin-inline: auto;
+  padding-inline: 15px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ============================================================
+   Utilities — .pt-xl / .pb-xl
+   ============================================================ */
+
+.pt-xl {
+  padding-top: clamp(var(--space-lg), 12vw, var(--space-xl));
+}
+
+.pb-xl {
+  padding-bottom: clamp(var(--space-lg), 12vw, var(--space-xl));
+}
+
+/* ============================================================
+   Utilities — .no-wrap
+   ============================================================ */
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+/* ============================================================
+   Layout — .module-comp / .sectionBorder
+   ============================================================ */
+
+.module-comp {
+  position: relative;
+  background-color: var(--color-background);
+}
+
+.module-comp .richtext h2,
+.module-comp .richtext h3,
+.module-comp .richtext h4,
+.module-comp .richtext h5,
+.module-comp .richtext h6 {
+  margin-top: 0;
+}
+
+.module-comp .sectionBorder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px solid var(--color-background-gray);
+}
+
+.module-comp.no-border .sectionBorder {
+  display: none;
+}
+
+/* ============================================================
+   Buttons — .button / .button--secondary
+   ============================================================ */
+
+button:not(.accordionItemHeaderButton, .no-ui-button, .osano-cm-close, .tab-button),
+.button,
+.hs-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-flex;
+  padding-block: 0;
+  padding-inline: 0;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-relaxed);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  text-decoration: none;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  gap: 10px;
+  padding: 17px 36px;
+  border-radius: 0 !important;
+  background: var(--color-button-primary-background);
+  color: var(--color-button-primary-text);
+  box-shadow: var(--box-shadow-rgb);
+  transition: box-shadow var(--transition-snappy), color var(--transition-snappy), background var(--transition-snappy);
+}
+
+button:not(.accordionItemHeaderButton, .no-ui-button, .osano-cm-close, .tab-button):hover:not(.no-ui-button),
+.button:hover:not(.no-ui-button),
+.hs-button:hover:not(.no-ui-button) {
+  color: var(--color-button-primary-text);
+  box-shadow: 0 0 0 0 transparent;
+}
+
+button:not(.accordionItemHeaderButton, .no-ui-button, .osano-cm-close, .tab-button).button--secondary,
+.button.button--secondary,
+.hs-button.button--secondary {
+  background: var(--color-button-secondary-background);
+  color: var(--color-button-secondary-text);
+  box-shadow: none;
+}
+
+button:not(.accordionItemHeaderButton, .no-ui-button, .osano-cm-close, .tab-button).button--secondary:hover,
+.button.button--secondary:hover,
+.hs-button.button--secondary:hover {
+  color: var(--color-button-secondary-text);
+  background: var(--color-button-secondary-background-hover);
+  box-shadow: none;
+}
+
+/* ============================================================
+   .buttonGroup
+   ============================================================ */
+
+.buttonGroup {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: var(--space-xs);
+}
+
+.buttonGroup .button,
+.buttonGroup button,
+.buttonGroup .hs-button {
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .buttonGroup {
+    margin-top: var(--space-xs);
+  }
+}
+
+.buttonGroup[data-align="center"] {
+  justify-content: flex-start;
+}
+
+@media (min-width: 768px) {
+  .buttonGroup[data-align="center"] {
+    justify-content: center;
+  }
+}
+
+/* ============================================================
+   Hero — ._homeHero_m4xpb_1
+   Source: assets/index-BACNmujm.css
+   ============================================================ */
+
+._homeHero_m4xpb_1 {
+  background-color: var(--color-background);
+  position: relative;
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  min-height: calc(100vh - 100px);
+  min-height: calc(100dvh - 100px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+._homeHero_m4xpb_1 h1 span[data-variant="digital"] {
+  font-family: var(--font-digital);
+  font-size: 177px;
+  font-weight: 500;
+  display: inline-block;
+  vertical-align: -18px;
+  margin-left: -7px;
+  text-shadow: var(--text-shadow-rgb);
+}
+
+._homeHero_m4xpb_1 h1 span[data-variant="pixel"] {
+  font-family: var(--font-pixel);
+  font-size: inherit;
+  font-weight: 500;
+  display: inline-block;
+  vertical-align: inherit;
+  vertical-align: -18px;
+  margin-left: -7px;
+}
+
+@media screen and (min-width: 768px) {
+  ._homeHero_m4xpb_1 {
+    justify-content: center;
+  }
+}
+
+/* ============================================================
+   Hero — ._eyebrow_m4xpb_37
+   ============================================================ */
+
+._eyebrow_m4xpb_37 {
+  display: inline-block;
+  position: relative;
+  color: var(--Shell-500, #e7e6d9);
+  text-align: center;
+  text-overflow: ellipsis;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: var(--leading-snug);
+  margin-bottom: 20px;
+  max-width: 98%;
+  text-wrap-style: pretty;
+}
+
+@media (min-width: 768px) {
+  ._eyebrow_m4xpb_37 {
+    font-size: clamp(1.25rem, 2.5vw, var(--text-xl));
+    max-width: 80%;
+  }
+}
+
+/* ============================================================
+   Hero — ._heroTitle_m4xpb_78 / ._reducedMotionTitle_m4xpb_75
+   ============================================================ */
+
+._reducedMotionTitle_m4xpb_75 {
+  display: none;
+}
+
+._heroTitle_m4xpb_78 {
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ._reducedMotionTitle_m4xpb_75 {
+    display: block;
+  }
+  ._heroTitle_m4xpb_78 {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Hero — ._titleContainer_m4xpb_58 / ._buttonGroup_m4xpb_63
+   ============================================================ */
+
+._titleContainer_m4xpb_58 {
+  position: relative;
+  z-index: 1;
+}
+
+._buttonGroup_m4xpb_63 {
+  gap: var(--space-2xs);
+  margin-top: 50px;
+  justify-content: center !important;
+}
+
+/* ============================================================
+   Background Animation — ._backgroundAnimation_15jea_2
+   Source: assets/BackgroundAnimation-rpP8vSYG.css
+   ============================================================ */
+
+._backgroundAnimation_15jea_2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+._animationContainer_15jea_14 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  transition: opacity 1s ease-in-out;
+}
+
+._animationContainer_15jea_14 canvas {
+  min-width: 1800px;
+  height: auto;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  overflow: hidden;
+  mask: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+._fadeIn_15jea_37 {
+  opacity: 1;
+}
+
+._fadeOut_15jea_41 {
+  opacity: 0;
+}
+
+@media (max-width: 1440px) {
+  ._animationContainer_15jea_14 {
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+}
+
+@media (max-width: 768px) {
+  ._animationContainer_15jea_14 {
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ._backgroundAnimation_15jea_2 {
+    display: none;
+  }
+}
+
+
+._fontSwapIsland_1e8ab_1 {
+  display: inline-block;
+}
+
+/* ============================================================
+/* macOS Safari desktop */
+
+
+/* iOS Safari and Chrome-iOS */
+
+
+
+/* ============================================================
+   FEATURES / ACCORDION SECTION — Additional styles
+   (grid, accordion, illustration — appended below hero styles)
+   ============================================================ */
+
+/* ============================================================
+   Base — html
+   ============================================================ */
+
+html {
+  interpolate-size: allow-keywords;
+  box-sizing: border-box;
+  height: 100%;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  scroll-behavior: smooth;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-relaxed);
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-text-secondary);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* ============================================================
+   Typography — h2 / .h2
+   ============================================================ */
+
+h2, .h2 {
+  font-family: var(--font-sans);
+  font-size: clamp(2.3rem, 6vw, var(--text-5xl));
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tighter);
+  color: var(--color-text-primary);
+  position: relative;
+}
+
+h2[data-variant="highlight-dark"],
+.h2[data-variant="highlight-dark"] {
+  display: inline;
+  line-height: 1.16em;
+  padding: .02em .05em;
+  background-color: var(--color-terminal);
+  color: var(--color-shell);
+  box-shadow: -2px 0 #e70000, -4px 0 #e7e600, 2px 0 #0000d9, 4px 0 #00e6d9;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* ============================================================
+   Typography — h3 / .h3
+   ============================================================ */
+
+h3, .h3 {
+  font-family: var(--font-sans);
+  font-size: clamp(2rem, 5vw, var(--text-4xl));
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tighter);
+  color: var(--color-text-primary);
+}
+
+/* ============================================================
+   Typography — h5 / .h5
+   ============================================================ */
+
+h5, .h5 {
+  font-family: var(--font-sans);
+  font-size: clamp(1.5rem, 3vw, var(--text-2xl));
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+}
+
+/* Light mode typography overrides */
+.light-content h1,
+.light-content h2,
+.light-content h3,
+.light-content h4,
+.light-content h5,
+.light-content h6,
+.light-content .h1,
+.light-content .h2,
+.light-content .h3,
+.light-content .h4,
+.light-content .h5,
+.light-content .h6 {
+  color: var(--color-terminal);
+}
+
+/* ============================================================
+   Utilities — .container
+   ============================================================ */
+
+.container {
+  width: 100%;
+  max-width: 1398px;
+  margin-inline: auto;
+  padding-inline: 15px;
+}
+
+/* ============================================================
+   Utilities — .pt-xl / .pb-xl
+   ============================================================ */
+
+.pt-xl {
+  padding-top: clamp(var(--space-lg), 12vw, var(--space-xl));
+}
+
+.pb-xl {
+  padding-bottom: clamp(var(--space-lg), 12vw, var(--space-xl));
+}
+
+/* ============================================================
+   Utilities — .stack--md
+   ============================================================ */
+
+.stack--md > * + * {
+  margin-top: var(--space-md);
+}
+
+/* ============================================================
+   Layout — .module-comp / .sectionBorder
+   ============================================================ */
+
+.module-comp {
+  position: relative;
+  background-color: var(--color-background);
+}
+
+.module-comp .richtext h2,
+.module-comp .richtext h3,
+.module-comp .richtext h4,
+.module-comp .richtext h5,
+.module-comp .richtext h6 {
+  margin-top: 0;
+}
+
+.module-comp .sectionBorder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px solid var(--color-background-gray);
+}
+
+.module-comp.no-border .sectionBorder {
+  display: none;
+}
+
+/* ============================================================
+   Foundation Grid — .grid-x
+   ============================================================ */
+
+.grid-x {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.grid-x > .auto {
+  width: auto;
+}
+
+.grid-x > .shrink {
+  width: auto;
+}
+
+/* Small column flex-basis */
+.grid-x > .small-shrink,
+.grid-x > .small-full,
+.grid-x > .small-1,
+.grid-x > .small-2,
+.grid-x > .small-3,
+.grid-x > .small-4,
+.grid-x > .small-5,
+.grid-x > .small-6,
+.grid-x > .small-7,
+.grid-x > .small-8,
+.grid-x > .small-9,
+.grid-x > .small-10,
+.grid-x > .small-11,
+.grid-x > .small-12 {
+  flex-basis: auto;
+}
+
+/* Small column flex + widths */
+.grid-x > .small-1,
+.grid-x > .small-2,
+.grid-x > .small-3,
+.grid-x > .small-4,
+.grid-x > .small-5,
+.grid-x > .small-6,
+.grid-x > .small-7,
+.grid-x > .small-8,
+.grid-x > .small-9,
+.grid-x > .small-10,
+.grid-x > .small-11,
+.grid-x > .small-12 {
+  flex: 0 0 auto;
+}
+
+.grid-x > .small-1  { width: 8.33333%; }
+.grid-x > .small-2  { width: 16.66667%; }
+.grid-x > .small-3  { width: 25%; }
+.grid-x > .small-4  { width: 33.33333%; }
+.grid-x > .small-5  { width: 41.66667%; }
+.grid-x > .small-6  { width: 50%; }
+.grid-x > .small-7  { width: 58.33333%; }
+.grid-x > .small-8  { width: 66.66667%; }
+.grid-x > .small-9  { width: 75%; }
+.grid-x > .small-10 { width: 83.33333%; }
+.grid-x > .small-11 { width: 91.66667%; }
+.grid-x > .small-12 { width: 100%; }
+
+/* Medium columns — activated at 1024px */
+@media print, screen and (min-width: 1024px) {
+  .grid-x > .medium-shrink,
+  .grid-x > .medium-full,
+  .grid-x > .medium-1,
+  .grid-x > .medium-2,
+  .grid-x > .medium-3,
+  .grid-x > .medium-4,
+  .grid-x > .medium-5,
+  .grid-x > .medium-6,
+  .grid-x > .medium-7,
+  .grid-x > .medium-8,
+  .grid-x > .medium-9,
+  .grid-x > .medium-10,
+  .grid-x > .medium-11,
+  .grid-x > .medium-12 {
+    flex-basis: auto;
+  }
+
+  .grid-x > .medium-auto {
+    flex: 1 1 0;
+    width: auto;
+  }
+
+  .grid-x > .medium-shrink,
+  .grid-x > .medium-1,
+  .grid-x > .medium-2,
+  .grid-x > .medium-3,
+  .grid-x > .medium-4,
+  .grid-x > .medium-5,
+  .grid-x > .medium-6,
+  .grid-x > .medium-7,
+  .grid-x > .medium-8,
+  .grid-x > .medium-9,
+  .grid-x > .medium-10,
+  .grid-x > .medium-11,
+  .grid-x > .medium-12 {
+    flex: 0 0 auto;
+  }
+
+  .grid-x > .medium-shrink { width: auto; }
+  .grid-x > .medium-1  { width: 8.33333%; }
+  .grid-x > .medium-2  { width: 16.66667%; }
+  .grid-x > .medium-3  { width: 25%; }
+  .grid-x > .medium-4  { width: 33.33333%; }
+  .grid-x > .medium-5  { width: 41.66667%; }
+  .grid-x > .medium-6  { width: 50%; }
+  .grid-x > .medium-7  { width: 58.33333%; }
+  .grid-x > .medium-8  { width: 66.66667%; }
+  .grid-x > .medium-9  { width: 75%; }
+  .grid-x > .medium-10 { width: 83.33333%; }
+  .grid-x > .medium-11 { width: 91.66667%; }
+  .grid-x > .medium-12 { width: 100%; }
+}
+
+/* ============================================================
+   Foundation Grid — .grid-margin-x
+   ============================================================ */
+
+.grid-margin-x:not(.grid-x) > .cell {
+  width: auto;
+}
+
+.grid-margin-x {
+  margin-left: -.625rem;
+  margin-right: -.625rem;
+}
+
+.grid-margin-x > .cell {
+  width: calc(100% - 1.25rem);
+  margin-left: .625rem;
+  margin-right: .625rem;
+}
+
+.grid-margin-x > .auto   { width: auto; }
+.grid-margin-x > .shrink { width: auto; }
+
+.grid-margin-x > .small-1  { width: calc(8.33333%  - 1.25rem); }
+.grid-margin-x > .small-2  { width: calc(16.66667% - 1.25rem); }
+.grid-margin-x > .small-3  { width: calc(25%        - 1.25rem); }
+.grid-margin-x > .small-4  { width: calc(33.33333% - 1.25rem); }
+.grid-margin-x > .small-5  { width: calc(41.66667% - 1.25rem); }
+.grid-margin-x > .small-6  { width: calc(50%        - 1.25rem); }
+.grid-margin-x > .small-7  { width: calc(58.33333% - 1.25rem); }
+.grid-margin-x > .small-8  { width: calc(66.66667% - 1.25rem); }
+.grid-margin-x > .small-9  { width: calc(75%        - 1.25rem); }
+.grid-margin-x > .small-10 { width: calc(83.33333% - 1.25rem); }
+.grid-margin-x > .small-11 { width: calc(91.66667% - 1.25rem); }
+.grid-margin-x > .small-12 { width: calc(100%       - 1.25rem); }
+
+/* Grid margin-x medium — activated at 1024px */
+@media print, screen and (min-width: 1024px) {
+  .grid-margin-x {
+    margin-left: -.9375rem;
+    margin-right: -.9375rem;
+  }
+
+  .grid-margin-x > .cell {
+    width: calc(100% - 1.875rem);
+    margin-left: .9375rem;
+    margin-right: .9375rem;
+  }
+
+  .grid-margin-x > .auto   { width: auto; }
+  .grid-margin-x > .shrink { width: auto; }
+
+  .grid-margin-x > .small-1  { width: calc(8.33333%  - 1.875rem); }
+  .grid-margin-x > .small-2  { width: calc(16.66667% - 1.875rem); }
+  .grid-margin-x > .small-3  { width: calc(25%        - 1.875rem); }
+  .grid-margin-x > .small-4  { width: calc(33.33333% - 1.875rem); }
+  .grid-margin-x > .small-5  { width: calc(41.66667% - 1.875rem); }
+  .grid-margin-x > .small-6  { width: calc(50%        - 1.875rem); }
+  .grid-margin-x > .small-7  { width: calc(58.33333% - 1.875rem); }
+  .grid-margin-x > .small-8  { width: calc(66.66667% - 1.875rem); }
+  .grid-margin-x > .small-9  { width: calc(75%        - 1.875rem); }
+  .grid-margin-x > .small-10 { width: calc(83.33333% - 1.875rem); }
+  .grid-margin-x > .small-11 { width: calc(91.66667% - 1.875rem); }
+  .grid-margin-x > .small-12 { width: calc(100%       - 1.875rem); }
+
+  .grid-margin-x > .medium-auto   { width: auto; }
+  .grid-margin-x > .medium-shrink { width: auto; }
+  .grid-margin-x > .medium-1  { width: calc(8.33333%  - 1.875rem); }
+  .grid-margin-x > .medium-2  { width: calc(16.66667% - 1.875rem); }
+  .grid-margin-x > .medium-3  { width: calc(25%        - 1.875rem); }
+  .grid-margin-x > .medium-4  { width: calc(33.33333% - 1.875rem); }
+  .grid-margin-x > .medium-5  { width: calc(41.66667% - 1.875rem); }
+  .grid-margin-x > .medium-6  { width: calc(50%        - 1.875rem); }
+  .grid-margin-x > .medium-7  { width: calc(58.33333% - 1.875rem); }
+  .grid-margin-x > .medium-8  { width: calc(66.66667% - 1.875rem); }
+  .grid-margin-x > .medium-9  { width: calc(75%        - 1.875rem); }
+  .grid-margin-x > .medium-10 { width: calc(83.33333% - 1.875rem); }
+  .grid-margin-x > .medium-11 { width: calc(91.66667% - 1.875rem); }
+  .grid-margin-x > .medium-12 { width: calc(100%       - 1.875rem); }
+}
+
+/* ============================================================
+   Foundation Grid — .cell
+   ============================================================ */
+
+.cell {
+  flex: 0 0 auto;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+}
+
+.cell.auto   { flex: 1 1 0; }
+.cell.shrink { flex: 0 0 auto; }
+
+/* ============================================================
+   .titleBlock
+   ============================================================ */
+
+.titleBlock .content.large-text {
+  font-size: var(--text-lg);
+}
+
+.titleBlock .content.large-text p,
+.titleBlock .content.large-text li,
+.titleBlock .content.large-text a:not(.button),
+.titleBlock .content.large-text span {
+  font-size: var(--text-lg);
+}
+
+.titleBlock .richtext {
+  display: block;
+  padding-top: var(--space-xs);
+}
+
+.titleBlock .content {
+  position: relative;
+  color: var(--color-text-primary);
+}
+
+.titleBlock .content {
+  padding-left: var(--space-lg);
+}
+
+.titleBlock .content:before {
+  content: "";
+  height: 41px;
+  width: 84px;
+  border-left: 1px solid var(--color-background-light);
+  border-bottom: 1px solid var(--color-background-light);
+  position: absolute;
+  left: 2px;
+  top: 10px;
+}
+
+.titleBlock .titleImage {
+  margin-top: var(--space-xs);
+}
+
+.titleBlock .titleImage img {
+  width: 100%;
+  height: auto;
+}
+
+/* No-content variant (removes left indent bracket) */
+.titleBlock .noContent {
+  padding-left: 0;
+}
+
+.titleBlock .noContent:before {
+  display: none;
+}
+
+/* ============================================================
+   Accordion — container
+   ============================================================ */
+
+.accordion {
+  width: 100%;
+}
+
+/* ============================================================
+   Accordion — .accordionItem
+   ============================================================ */
+
+.accordion .accordionItem {
+  border-bottom: 1px solid var(--color-background-gray);
+  -moz-column-gap: clamp(20px, 5vw, 45px);
+  column-gap: clamp(20px, 5vw, 45px);
+  display: flex;
+  flex-direction: row;
+  padding: 35px 0;
+}
+
+.accordion .accordionItem:first-child {
+  border-top: 1px solid var(--color-background-gray);
+}
+
+/* ============================================================
+   Accordion — .accordionItemNumberColumn
+   ============================================================ */
+
+.accordion .accordionItemNumberColumn {
+  flex-shrink: 0;
+}
+
+.accordion .accordionItemNumberColumn span {
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-regular);
+}
+
+/* "/" suffix after each number, colored ultraviolet */
+.accordion .accordionItemNumberColumn span:after {
+  color: var(--color-ultraviolet);
+  content: "/";
+}
+
+/* ============================================================
+   Accordion — .accordionItemContentColumn
+   ============================================================ */
+
+.accordion .accordionItemContentColumn {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+/* ============================================================
+   Accordion — .accordionItemHeaderButton
+   (excluded from global button reset via :not() selector)
+   ============================================================ */
+
+.accordion .accordionItemHeader {
+  /* h3 reset — use the button for all interaction styles */
+  margin: 0;
+}
+
+.accordionItemHeaderButton {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: flex;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* ============================================================
+   Accordion — .accordionItemTitle
+   ============================================================ */
+
+.accordion .accordionItemTitle {
+  all: unset;
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(1.5rem, 3vw, var(--text-2xl));
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+  display: block;
+}
+
+/* ============================================================
+   Accordion — .accordionToggle  (the +/- symbol)
+   ============================================================ */
+
+.accordion .accordionToggle {
+  all: unset;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--color-text-primary);
+  transition: transform var(--transition-snappy);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+/* ============================================================
+   Accordion — .accordionItemContent / .accordionItemContentOpen
+   ============================================================ */
+
+.accordion .accordionItemContent {
+  /* max-height: inspect live site */
+  overflow: hidden;
+  padding-top: 0;
+  visibility: hidden;
+  /* transition: inspect live site */
+}
+
+.accordion .accordionItemContentOpen {
+  /* max-height: inspect live site */
+  padding-top: 20px;
+  visibility: visible;
+}
+
+.accordion .accordionItemContent p {
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* When reduced motion is preferred, disable transitions */
+@media (prefers-reduced-motion: reduce) {
+  .accordion .accordionItemContent {
+    transition: none;
+  }
+}
+
+/* ============================================================
+   Accordion — .accordionItemRich (richtext inside accordion)
+   ============================================================ */
+
+.accordionItemRich p {
+  margin-bottom: var(--space-xs);
+}
+
+.accordionItemRich p:last-child {
+  margin-bottom: 0;
+}
+
+.accordionItemRich h2,
+.accordionItemRich h3,
+.accordionItemRich h4,
+.accordionItemRich h5,
+.accordionItemRich h6 {
+  margin-bottom: var(--space-2xs);
+  margin-top: var(--space-sm);
+}
+
+.accordionItemRich ul,
+.accordionItemRich ol {
+  margin-bottom: var(--space-xs);
+}
+
+.accordionItemRich ul {
+  list-style: none;
+  padding-left: var(--space-3xs);
+}
+
+.accordionItemRich ol {
+  list-style: decimal;
+  padding-left: var(--space-3xs);
+}
+
+.accordionItemRich li {
+  margin-bottom: var(--space-2xs);
+}
+
+.accordionItemRich ol li {
+  margin-left: 2rem;
+}
+
+.accordionItemRich ul li {
+  position: relative;
+  padding-left: 1.5em;
+}
+
+.accordionItemRich ul li:before {
+  content: "+";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: inherit;
+}
+
+/* ============================================================
+   Accordion — .accordionItemCta
+   Fades in with a slight upward slide when item is open
+   ============================================================ */
+
+.accordion .accordionItemCta {
+  margin-top: 35px;
+  opacity: 0;
+  transition: opacity var(--transition-smooth), transform var(--transition-smooth);
+  transition-delay: .3s;
+  transform: translateY(-20px);
+}
+
+.accordion .accordionItemContentOpen .accordionItemCta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   Accordion Animation Island — number highlight
+   Source: assets/AccordionLevelAnimationIsland-DQ4KJshu.css
+   ============================================================ */
+
+._accordionActiveItemNumber_1wr90_1 {
+  color: #fff;
+}
+
+._accordionActiveItemNumber_1wr90_1._active_1wr90_5 {
+  color: var(--color-ultraviolet);
+}
+
+/* ============================================================
+   Accordion Animation Island — right column container
+   Holds the isometric datacenter illustration
+   ============================================================ */
+
+._animationContainer_1wr90_9 {
+  position: relative;
+  margin-top: 20px;
+  aspect-ratio: auto 691 / 883;
+  width: auto;
+  max-width: 100%;
+}
+
+@media (min-width: 1024px) {
+  ._animationContainer_1wr90_9 {
+    aspect-ratio: auto 883 / 1128;
+    padding-left: 40px;
+    margin-top: -40px;
+  }
+}
+
+
+/* ============================================================
+   HARDWARE SECTION — Additional CSS variables + component styles
+   ============================================================ */
+
+:root {
+  --color-terminal-deep: #000000;
+  --color-terminal-muted: #262625;
+  --color-purple: #6236F4;
+}
+
+/* Section wrapper */
+.hardwareSection {
+  background-color: var(--color-terminal-deep);
+}
+
+.hardwareInner {
+  max-width: 1398px;
+  margin: 0 auto;
+  padding: 100px 15px;
+  padding-top: clamp(100px, 12vw, 160px);
+  padding-bottom: clamp(100px, 12vw, 160px);
+}
+
+/* Title block */
+.hardwareTitleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .hardwareTitleBlock {
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+  }
+  .hardwareTitleLeft { width: 58.333%; }
+  .hardwareTitleRight { width: 41.667%; }
+}
+
+.hardwareHeading {
+  font-family: var(--font-sans);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--color-shell);
+  margin: 0;
+}
+
+.hardwareSubtitle {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 150%;
+  color: var(--color-shell);
+  margin: 0;
+  padding-top: 0;
+}
+
+@media (min-width: 768px) {
+  .hardwareSubtitle { padding-top: 40px; }
+}
+
+/* Horizontal accordion container */
+.hardwareAccordionItems {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-top: 80px;
+  height: 610px;
+}
+
+/* Each card */
+.hardwareAccordionItem {
+  all: unset;
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  height: 610px;
+  background-color: var(--color-terminal-deep);
+  border: 1px solid var(--color-terminal-muted);
+  cursor: pointer;
+  text-align: left;
+  overflow: visible;
+  flex: 1 1 240px;
+  transition: flex-basis 0.4s cubic-bezier(0.6, 0, 0.4, 1);
+}
+
+.hardwareAccordionItem.hardwareActive {
+  flex-basis: 46%;
+}
+
+/* Product image */
+.hardwareAccordionImage {
+  display: flex;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  overflow: hidden;
+  align-items: flex-start;
+  justify-content: center;
+  mix-blend-mode: luminosity;
+}
+
+.hardwareAccordionImage.hardwareActiveImage {
+  mix-blend-mode: normal;
+}
+
+.hardwareAccordionImg {
+  display: block;
+  width: 410px;
+  height: 410px;
+  max-width: 610px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+/* Inner wrapper — pushes text to bottom */
+.hardwareAccordionItemInner {
+  display: flex;
+  position: static;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+/* Text content block */
+.hardwareAccordionTextContent {
+  position: relative;
+  width: 100%;
+  padding: 40px;
+  opacity: 0.9;
+  background: var(--color-terminal-deep);
+  box-sizing: border-box;
+  height: 132px;
+  transition: height 0.4s cubic-bezier(0.6, 0, 0.4, 1) 0.3s;
+}
+
+.hardwareAccordionTextContent.hardwareActiveTextContent {
+  height: 300px;
+}
+
+/* Title */
+.hardwareAccordionItemTitle {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 31.2px;
+  letter-spacing: -0.24px;
+  color: var(--color-shell);
+  margin: 0 0 -10px 0;
+  padding: 0;
+}
+
+/* Description */
+.hardwareAccordionItemRichText {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--color-neutral-400);
+  margin-top: 20px;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  height: 170px;
+  top: 85px;
+  left: 0;
+  padding: 0 40px;
+  transform: translateY(-20px);
+  transition:
+    opacity 0.4s cubic-bezier(0.6, 0, 0.4, 1) 0.5s,
+    transform 0.4s cubic-bezier(0.6, 0, 0.4, 1) 0.5s;
+}
+
+.hardwareAccordionItemRichText.hardwareActiveRichText {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  margin-top: 20px;
+}
+
+/* Bottom indicator bar */
+.hardwareAccordionItemIndicator {
+  display: block;
+  width: calc(100% + 2px);
+  height: 10px;
+  margin-left: -1px;
+  margin-top: 8px;
+  background-color: var(--color-shell);
+  transition: background-color 0.4s cubic-bezier(0.6, 0, 0.4, 1);
+}
+
+.hardwareAccordionItemIndicator.hardwareActiveIndicator {
+  background-color: var(--color-purple);
+}
+
+.hardwareAccordionItem:hover .hardwareAccordionItemIndicator {
+  background-color: var(--color-purple);
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .hardwareAccordionItems {
+    flex-direction: column;
+    height: auto;
+  }
+  .hardwareAccordionItem {
+    height: auto;
+    min-height: 300px;
+    flex: none !important;
+  }
+  .hardwareAccordionImage {
+    position: relative;
+    height: 300px;
+  }
+  .hardwareAccordionTextContent {
+    height: auto !important;
+  }
+  .hardwareAccordionItemRichText {
+    position: relative;
+    top: auto; left: auto;
+    padding: 0;
+    height: auto;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+  .hardwareAccordionItemIndicator {
+    display: none;
+  }
+}
