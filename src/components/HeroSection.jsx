@@ -105,8 +105,9 @@ export default function HeroSection() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    canvas.width = 1800;
-    canvas.height = 800;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = 1800 * dpr;
+    canvas.height = 800 * dpr;
 
     const gl = canvas.getContext("webgl2") || canvas.getContext("webgl");
     if (!gl) return;
@@ -249,7 +250,7 @@ export default function HeroSection() {
         // Color per pass: muted spectrum, dark and desaturated
         vec2 s1 = st + vec2(scrollX + 0.0,  0.0) + scrollOffset * 38.0 * 0.928;
         vec2 s2 = st + vec2(scrollX + 0.0,  0.0) + vec2(10.0) + scrollOffset * 48.0 * 0.928;
-        float pA = voronoi(s1 * aspect, 0.5 * 0.51) * 0.001 + voronoi(s2 * aspect, 0.5 * 0.50) * 0.06;
+        float pA = voronoi(s1 * aspect, 0.5 * 0.45) * 0.001 + voronoi(s2 * aspect, 0.5 * 0.50) * 0.06;
         finalWisps += pA * vec3(0.75, 0.25, 0.25); 
         //  
         
@@ -259,27 +260,27 @@ export default function HeroSection() {
 
         vec2 s3 = st + vec2(scrollX + 7.0,  0.0) + scrollOffset * 38.0 * 0.928;
         vec2 s4 = st + vec2(scrollX + 7.0,  0.0) + vec2(10.0) + scrollOffset * 48.0 * 0.928;
-        float pB = voronoi(s3 * aspect, 0.5 * 0.51) * 0.001 + voronoi(s4 * aspect, 0.5 * 0.51) * 0.06;
+        float pB = voronoi(s3 * aspect, 0.5 * 0.45) * 0.001 + voronoi(s4 * aspect, 0.5 * 0.45) * 0.06;
         finalWisps += pB *  vec3(0.35, 0.15, 0.60); // violet
 
         
 
         vec2 s5 = st + vec2(scrollX + 14.0, 0.0) + scrollOffset * 38.0 * 0.928;
         vec2 s6 = st + vec2(scrollX + 14.0, 0.0) + vec2(10.0) + scrollOffset * 48.0 * 0.928;
-        float pC = voronoi(s5 * aspect, 0.5 * 0.51) * 0.001 + voronoi(s6 * aspect, 0.5 * 0.51) * 0.06;
+        float pC = voronoi(s5 * aspect, 0.5 * 0.45) * 0.001 + voronoi(s6 * aspect, 0.5 * 0.45) * 0.06;
         finalWisps += pC * vec3(0.15, 0.20, 0.55); // deep blue
 // vec3(0.55, 0.12, 0.35); // magenta
 
         vec2 s7 = st + vec2(scrollX + 21.0, 0.0) + scrollOffset * 38.0 * 0.928;
         vec2 s8 = st + vec2(scrollX + 21.0, 0.0) + vec2(10.0) + scrollOffset * 48.0 * 0.928;
-        float pD = voronoi(s7 * aspect, 0.5 * 0.51) * 0.001 + voronoi(s8 * aspect, 0.5 * 0.51) * 0.06;
+        float pD = voronoi(s7 * aspect, 0.5 * 0.45) * 0.001 + voronoi(s8 * aspect, 0.5 * 0.45) * 0.06;
         finalWisps += pD * vec3(0.25, 0.75, 0.25); // Verde desaturado
 
         //  vec3(0.12, 0.15, 0.45); // indigo
 
         vec2 s9  = st + vec2(scrollX + 28.0, 0.0) + scrollOffset * 38.0 * 0.928;
         vec2 s10 = st + vec2(scrollX + 28.0, 0.0) + vec2(10.0) + scrollOffset * 48.0 * 0.928;
-        float pE = voronoi(s9  * aspect, 0.5 * 0.51) * 0.001 + voronoi(s10 * aspect, 0.5 * 0.51) * 0.06;
+        float pE = voronoi(s9  * aspect, 0.5 * 0.45) * 0.001 + voronoi(s10 * aspect, 0.5 * 0.45) * 0.06;
         finalWisps += pE * vec3(0.25, 0.35, 0.75); // Azul desaturado
         // vec3(0.10, 0.30, 0.50); // cyan/teal
 
@@ -299,8 +300,8 @@ export default function HeroSection() {
 
         // --- Vertical band mask (applied last, after all effects) ---
         float bandCenter = 0.5 - (uMouse.y - 0.5) * 0.18;
-        bandCenter += 0.06;
-        bandCenter = clamp(bandCenter, 0.51, 0.72);
+        bandCenter += 0.1;
+        bandCenter = clamp(bandCenter, 0.45, 0.69);
         float distFromCenter = abs(vUv.y - bandCenter);
         float bandMask = 1.0 - smoothstep(0.12, 0.28, distFromCenter);
         bandMask = pow(bandMask, 1.8);
