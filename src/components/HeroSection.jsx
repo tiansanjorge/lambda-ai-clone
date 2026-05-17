@@ -207,9 +207,7 @@ export default function HeroSection() {
         vec3 color = vec3(0.04314);
 
         // --- Wisps ---
-        // Rotation: 0.2511 * 2PI (from original shader)
         float rotAngle = 0.2511 * 2.0 * PI;
-        // Compress heavily on Y axis (vec2(1, 0) mix at 0.97 = nearly flat)
         vec2 skew = vec2(1.0, 0.03);
 
         vec2 st = uv - vec2(0.5, 0.5);
@@ -218,19 +216,40 @@ export default function HeroSection() {
         st *= 40.0 * 0.928;
         st *= skew;
 
-        // Two passes at different scales (same as original pass1 + pass2)
-        // Scroll in wisp-space — periodic by nature, no seam
-        float scrollX = uTime * 0.005 * 0.5 * 40.0 * 0.928;
+        float scrollX = -uTime * 0.005 * 0.5 * 40.0 * 0.928;
         vec2 scrollOffset = vec2(0.0, uTime * 0.04 * 0.5 * -0.05);
-        vec2 st1 = st + vec2(scrollX, 0.0) + scrollOffset * 38.0 * 0.928;
-        vec2 st2 = st + vec2(scrollX, 0.0) + vec2(10.0) + scrollOffset * 48.0 * 0.928;
 
-        float pass1 = voronoi(st1 * aspect, 0.5 * 0.38) * 0.02;
-        float pass2 = voronoi(st2 * aspect, 0.5 * 0.38) * 0.04;
+        vec3 finalWisps = vec3(0.0);
 
-        // Ultraviolet color: rgb(161, 134, 248) -> vec3(0.631, 0.525, 0.973)
-        vec3 wispColor = vec3(0.631, 0.525, 0.973);
-        color += (pass1 + pass2) * wispColor;
+        // Each pass offset spatially → different voronoi cells → different lines
+        // Color per pass: muted spectrum, dark and desaturated
+        vec2 s1 = st + vec2(scrollX + 0.0,  0.0) + scrollOffset * 38.0 * 0.928;
+        vec2 s2 = st + vec2(scrollX + 0.0,  0.0) + vec2(10.0) + scrollOffset * 48.0 * 0.928;
+        float pA = voronoi(s1 * aspect, 0.5 * 0.38) * 0.001 + voronoi(s2 * aspect, 0.5 * 0.38) * 0.06;
+        finalWisps += pA * vec3(0.15, 0.20, 0.55); // deep blue
+        
+
+        vec2 s3 = st + vec2(scrollX + 7.0,  0.0) + scrollOffset * 38.0 * 0.928;
+        vec2 s4 = st + vec2(scrollX + 7.0,  0.0) + vec2(10.0) + scrollOffset * 48.0 * 0.928;
+        float pB = voronoi(s3 * aspect, 0.5 * 0.38) * 0.001 + voronoi(s4 * aspect, 0.5 * 0.38) * 0.06;
+        finalWisps += pB * vec3(0.35, 0.15, 0.60); // violet
+
+        vec2 s5 = st + vec2(scrollX + 14.0, 0.0) + scrollOffset * 38.0 * 0.928;
+        vec2 s6 = st + vec2(scrollX + 14.0, 0.0) + vec2(10.0) + scrollOffset * 48.0 * 0.928;
+        float pC = voronoi(s5 * aspect, 0.5 * 0.38) * 0.001 + voronoi(s6 * aspect, 0.5 * 0.38) * 0.06;
+        finalWisps += pC * vec3(0.55, 0.12, 0.35); // magenta
+
+        vec2 s7 = st + vec2(scrollX + 21.0, 0.0) + scrollOffset * 38.0 * 0.928;
+        vec2 s8 = st + vec2(scrollX + 21.0, 0.0) + vec2(10.0) + scrollOffset * 48.0 * 0.928;
+        float pD = voronoi(s7 * aspect, 0.5 * 0.38) * 0.001 + voronoi(s8 * aspect, 0.5 * 0.38) * 0.06;
+        finalWisps += pD * vec3(0.12, 0.15, 0.45); // indigo
+
+        vec2 s9  = st + vec2(scrollX + 28.0, 0.0) + scrollOffset * 38.0 * 0.928;
+        vec2 s10 = st + vec2(scrollX + 28.0, 0.0) + vec2(10.0) + scrollOffset * 48.0 * 0.928;
+        float pE = voronoi(s9  * aspect, 0.5 * 0.38) * 0.001 + voronoi(s10 * aspect, 0.5 * 0.38) * 0.06;
+        finalWisps += pE * vec3(0.10, 0.30, 0.50); // cyan/teal
+
+        color += finalWisps;
         color = clamp(color, 0.0, 1.0);
 
         // Soft glow — brighten the band center subtly
@@ -238,44 +257,6 @@ export default function HeroSection() {
         float glow = smoothstep(0.35, 0.0, glowDist) * 0.15;
         color += vec3(0.12, 0.10, 0.22) * glow;
         color = clamp(color, 0.0, 1.0);
-
-        // --- Chromatic aberration (rotating, factor 0.692 from original) ---
-        float angle = (0.2592 + uTime * 0.04 * 0.05) * 360.0 * PI / 180.0;
-        vec2 rotation = vec2(sin(angle), cos(angle));
-        vec2 aberrated = 0.692 * rotation * 0.03 * distance(uv, vec2(0.5));
-        if (length(aberrated) > 0.001) {
-          // Shift R channel left, B channel right
-          // Re-compute wisps at offset UVs for R and B channels
-          vec2 uvR = cylindricalUV(vUv - aberrated, uMouse);
-          vec2 uvB = cylindricalUV(vUv + aberrated, uMouse);
-
-          // R channel from offset
-          vec2 stR = uvR - vec2(0.5);
-          stR *= aspect;
-          stR = rot(rotAngle) * stR;
-          stR *= 40.0 * 0.928;
-          stR *= skew;
-          vec2 st1R = stR + vec2(scrollX, 0.0) + scrollOffset * 38.0 * 0.928;
-          vec2 st2R = stR + vec2(scrollX, 0.0) + vec2(10.0) + scrollOffset * 48.0 * 0.928;
-          float p1R = voronoi(st1R, 0.5 * 0.38) * 0.02;
-          float p2R = voronoi(st2R, 0.5 * 0.38) * 0.04;
-          float wispR = (p1R + p2R) * wispColor.r + 0.04314;
-
-          // B channel from offset
-          vec2 stB = uvB - vec2(0.5);
-          stB *= aspect;
-          stB = rot(rotAngle) * stB;
-          stB *= 40.0 * 0.928;
-          stB *= skew;
-          vec2 st1B = stB + vec2(scrollX, 0.0) + scrollOffset * 38.0 * 0.928;
-          vec2 st2B = stB + vec2(scrollX, 0.0) + vec2(10.0) + scrollOffset * 48.0 * 0.928;
-          float p1B = voronoi(st1B, 0.5 * 0.38) * 0.02;
-          float p2B = voronoi(st2B, 0.5 * 0.38) * 0.04;
-          float wispB = (p1B + p2B) * wispColor.b + 0.04314;
-
-          color.r = wispR;
-          color.b = wispB;
-        }
 
         // --- Vertical band mask (applied last, after all effects) ---
         float bandCenter = 0.5 - (uMouse.y - 0.5) * 0.18;
