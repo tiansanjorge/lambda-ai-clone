@@ -371,7 +371,14 @@ export default function HeroSection() {
 
     draw();
 
+    const fadeTimeout = setTimeout(() => {
+      if (canvasRef.current) {
+        canvasRef.current.style.opacity = "1";
+      }
+    }, 1000);
+
     return () => {
+      clearTimeout(fadeTimeout);
       cancelAnimationFrame(rafId);
       sectionRef.current?.removeEventListener("mousemove", onMouseMove);
       gl.deleteProgram(program);
@@ -438,7 +445,10 @@ export default function HeroSection() {
             style={{ width: "100%", height: "100%" }}
             className="_animationContainer_15jea_14 _fadeIn_15jea_37"
           >
-            <canvas ref={canvasRef} />
+            <canvas
+              ref={canvasRef}
+              style={{ opacity: 0, transition: "opacity 2.5s ease-in" }}
+            />
           </div>
         </div>
       </div>
