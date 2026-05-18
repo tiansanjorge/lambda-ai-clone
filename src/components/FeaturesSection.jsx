@@ -56,6 +56,7 @@ export default function FeaturesSection() {
 
   return (
     <section className="pt-xl pb-xl module-comp">
+      <div className="sectionBorder"></div>
       <div className="container">
         <div className="stack--md">
 

@@ -27,7 +27,8 @@ export default function HardwareSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="hardwareSection">
+    <section className="hardwareSection module-comp">
+      <div className="sectionBorder"></div>
       <div className="hardwareInner">
         <div className="hardwareTitleBlock">
           <div className="hardwareTitleLeft">
