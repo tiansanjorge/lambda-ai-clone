@@ -1576,6 +1576,14 @@ h5, .h5 {
   mix-blend-mode: normal;
 }
 
+.hardwareAccordionImage img {
+  display: block;
+  width: 410px;
+  height: 410px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
 .hardwareAccordionImg {
   display: block;
   width: 410px;
