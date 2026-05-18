@@ -21,7 +21,7 @@ in vec2 vTextureCoord;
 uniform vec2 uMousePos;
 out vec4 fragColor;
 void main() {
-  fragColor = vec4(0.04314, 0.04314, 0.04314, 1.0);
+  fragColor = vec4(0.05, 0.05, 0.05, 1.0);
 }`;
 
 const WISPS_FS = `#version 300 es
@@ -67,7 +67,7 @@ float voronoi_additive(vec2 st, float radius, vec2 mouse_pos, float scale) {
       float dist = length(diff);
       float contribution = radius / max(dist, radius * 0.1);
       float shimmer_phase = dot(point, vec2(1.0)) * 10.0 + hash(cell_id).x * 5.0 + uTime * 0.08;
-      float shimmer = mix(1.0, (sin(shimmer_phase) + 1.0), 0.93);
+      float shimmer = mix(1.0, (sin(shimmer_phase) + 1.0), 0.6);
       contribution *= shimmer;
       total_contribution += mix(contribution * contribution, contribution * 2.0, 0.08);
     }
@@ -90,7 +90,7 @@ void main() {
   uv /= aspectRatio;
 
   vec2 mouseGrid = vec2(0.0);
-  vec2 movementOffset = vec2(0.0, uTime * 0.5 * -0.05);
+  vec2 movementOffset = vec2(0.0, uTime * 0.5 * -0.02);
 
   vec2 mouseGrid1 = mouseGrid - (mPos * 38.0 * 0.9280) + movementOffset;
   vec2 mouseGrid2 = mouseGrid - (mPos * 48.0 * 0.9280) + movementOffset;
@@ -138,7 +138,7 @@ void main() {
   vec4 color = texture(uTexture, uv);
   vec2 aspectRatio = vec2(uResolution.x / uResolution.y, 1.0);
   vec2 skew = vec2(0.0, 1.0);
-  float halfRadius = 0.44 * 0.5;
+  float halfRadius = 0.30 * 0.55;
   float innerEdge = halfRadius - 1.0 * halfRadius * 0.5;
   float outerEdge = halfRadius + 1.0 * halfRadius * 0.5;
   vec2 pos = vec2(0.5, 0.5);
@@ -352,7 +352,7 @@ void main() {
   bloomColor.rgb += dither;
   bloomColor.a = luma(bloomColor);
   vec4 sceneColor = texture(uBgTexture, vTextureCoord);
-  fragColor = mix(sceneColor, sceneColor + bloomColor, 0.55 * 2.2);
+  fragColor = mix(sceneColor, sceneColor + bloomColor, 0.55 * 2.0);
 }`;
 
 const PROJECTION_FS = `#version 300 es
@@ -397,7 +397,7 @@ vec2 directionToUVHorizontal(vec3 dir) {
 }
 void main() {
   float aspect = 2.0;
-  vec2 mPos = vec2(0.5, 0.60);
+  vec2 mPos = vec2(0.5, 0.58);
   vec3 rayDir = getRayDirection(vTextureCoord, mPos, aspect);
   vec2 sphereUV = directionToUVHorizontal(rayDir);
   float fov = mix(radians(20.0), radians(120.0), 0.75);

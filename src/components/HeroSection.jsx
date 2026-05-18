@@ -244,7 +244,7 @@ export default function HeroSection() {
           >
             <canvas
               ref={canvasRef}
-              style={{ opacity: 0, transition: "opacity 2.5s ease-in" }}
+              style={{ opacity: 0, transition: "opacity 0.7s ease-in" }}
             />
           </div>
         </div>

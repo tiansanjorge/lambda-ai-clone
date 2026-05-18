@@ -1926,6 +1926,9 @@ h5,
   .hardwareAccordionImage {
     position: relative;
     width: 100%;
+    mix-blend-mode: luminosity;
+  }
+  .hardwareAccordionImage.hardwareActiveImage {
     mix-blend-mode: normal;
   }
   .hardwareAccordionImage img {
