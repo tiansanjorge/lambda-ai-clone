@@ -2,14 +2,14 @@ import { useState, useEffect, useRef } from "react";
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
-const LOOP_DURATION = 10000;
+const LOOP_DURATION = 11000;
 const PHASE_DURATION = 1000;
 
-// Staggered start delay per character within a 10s loop
+// Staggered start delay per character within a 11s loop
 const CHAR_CONFIG = [
-  { key: "U", delay: 0 }, // 'u' in Superintelligence
-  { key: "E", delay: 3500 }, // 'e' in intelligEnce (index 13 of "Superintelligence")
-  { key: "O", delay: 6500 }, // 'o' in Cloud
+  { key: "U", delay: 1000 }, // 'u' in Superintelligence
+  { key: "E", delay: 4500 }, // 'e' in intelligEnce (index 13 of "Superintelligence")
+  { key: "O", delay: 7500 }, // 'o' in Cloud
 ];
 
 // Fixed-width container prevents layout shift across all phases.
@@ -98,7 +98,11 @@ export default function HeroSection() {
   const timeoutIds = useRef([]);
   const intervalId = useRef(null);
 
-  const [phases, setPhases] = useState({ U: "pixel", E: "pixel", O: "pixel" });
+  const [phases, setPhases] = useState({
+    U: "pixel-no-highlight",
+    E: "pixel-no-highlight",
+    O: "pixel-no-highlight",
+  });
 
   // ── Canvas background animation (WebGL) ──────────────────────────────────
   useEffect(() => {
@@ -413,13 +417,38 @@ export default function HeroSection() {
       document.fonts.load("1em apkarchivr21"),
       document.fonts.ready,
     ]).then(() => {
-      scheduleLoop();
+      const _o1 = Math.floor(Math.random() * 12) + 140;
+      const _o2 = Math.floor(Math.random() * 12) + 140;
+      const _shuffled = ["U", "E", "O"].sort(() => Math.random() - 0.5);
+      timeoutIds.current.push(
+        setTimeout(
+          () => setPhases((p) => ({ ...p, [_shuffled[0]]: "pixel" })),
+          500,
+        ),
+      );
+      timeoutIds.current.push(
+        setTimeout(
+          () => setPhases((p) => ({ ...p, [_shuffled[1]]: "pixel" })),
+          500 + _o1,
+        ),
+      );
+      timeoutIds.current.push(
+        setTimeout(
+          () => setPhases((p) => ({ ...p, [_shuffled[2]]: "pixel" })),
+          500 + _o1 + _o2,
+        ),
+      );
+      timeoutIds.current.push(
+        setTimeout(() => {
+          scheduleLoop();
 
-      intervalId.current = setInterval(() => {
-        timeoutIds.current.forEach(clearTimeout);
-        timeoutIds.current = [];
-        scheduleLoop();
-      }, LOOP_DURATION);
+          intervalId.current = setInterval(() => {
+            timeoutIds.current.forEach(clearTimeout);
+            timeoutIds.current = [];
+            scheduleLoop();
+          }, LOOP_DURATION);
+        }, 1500),
+      );
     });
 
     return () => {
