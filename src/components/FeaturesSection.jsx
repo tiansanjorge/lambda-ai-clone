@@ -102,7 +102,7 @@ export default function FeaturesSection() {
                         <div
                           className={`accordionItemContent${isOpen ? ' accordionItemContentOpen' : ''}`}
                           role="region"
-                          {...(!isOpen ? { inert: '' } : {})}
+                          {...(!isOpen ? { inert: true } : {})}
                         >
                           <div className="accordionItemRich">
                             <div>{item.body}</div>
