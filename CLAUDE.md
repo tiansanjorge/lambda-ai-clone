@@ -14,6 +14,11 @@ Pixel-perfect React + Tailwind reconstruction of 3 sections from lambda.ai:
 - `src/assets/styles_css.css` — extracted CSS (source of truth for ALL values — never guess)
 - `src/assets/guidelines.json` — design system overview
 
+original website screenshots
+- `src/assets/features-screenshot.png` 
+- `src/assets/hardware-screenshot.png` 
+- `src/assets/hero-screenshot.png 
+
 ## Stack
 
 - Vite + React

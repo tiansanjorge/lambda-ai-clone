@@ -1284,6 +1284,10 @@ h5, .h5 {
   justify-content: space-between;
 }
 
+.accordionItemHeaderButton:hover {
+  opacity: 0.7;
+}
+
 /* ============================================================
    Accordion — .accordionItemTitle
    ============================================================ */
@@ -1328,15 +1332,15 @@ h5, .h5 {
    ============================================================ */
 
 .accordion .accordionItemContent {
-  /* max-height: inspect live site */
+  max-height: 0;
   overflow: hidden;
   padding-top: 0;
   visibility: hidden;
-  /* transition: inspect live site */
+  transition: max-height 0.6s linear, padding-top 0.6s linear, visibility 0.6s linear;
 }
 
 .accordion .accordionItemContentOpen {
-  /* max-height: inspect live site */
+  max-height: 400px;
   padding-top: 20px;
   visibility: visible;
 }
