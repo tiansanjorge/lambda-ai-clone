@@ -56,7 +56,6 @@ export default function FeaturesSection() {
 
   return (
     <section className="pt-xl pb-xl module-comp">
-      <div className="sectionBorder"></div>
       <div className="container">
         <div className="stack--md">
 
@@ -83,7 +82,7 @@ export default function FeaturesSection() {
                   return (
                     <div className="accordionItem" key={item.id}>
                       <div className="accordionItemNumberColumn">
-                        <span className="h5" aria-hidden="true">{item.id}</span>
+                        <span className={`h5 _accordionActiveItemNumber_1wr90_1${isOpen ? ' _active_1wr90_5' : ''}`} aria-hidden="true">{item.id}</span>
                       </div>
                       <div className="accordionItemContentColumn">
                         <h3 className="accordionItemHeader">

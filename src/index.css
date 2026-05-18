@@ -1479,7 +1479,7 @@ h5, .h5 {
 
 /* Section wrapper */
 .hardwareSection {
-  background-color: var(--color-background);
+  background-color: var(--color-terminal-deep);
 }
 
 .hardwareInner {

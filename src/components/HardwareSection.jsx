@@ -27,17 +27,15 @@ export default function HardwareSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="hardwareSection module-comp">
-      <div className="sectionBorder"></div>
+    <section className="hardwareSection">
       <div className="hardwareInner">
         <div className="hardwareTitleBlock">
           <div className="hardwareTitleLeft">
-            <h2 className="hardwareHeading">The hardware behind the frontier.</h2>
+            <h2 className="hardwareHeading">The engines of<br />superintelligence</h2>
           </div>
           <div className="hardwareTitleRight">
             <p className="hardwareSubtitle">
-              Access the most advanced NVIDIA hardware available, deployed in our
-              purpose-built data centers with zero compromise on performance.
+              Give your team the computational precision to train foundation models and serve inference at global scale.
             </p>
           </div>
         </div>
