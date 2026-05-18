@@ -8,7 +8,11 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173)",
       "mcp__playwright__browser_resize",
       "mcp__playwright__browser_click",
-      "Bash(Remove-Item \"d:\\\\tians\\\\Documents\\\\Desarrollador Full Stack\\\\Proyectos\\\\Assessment Taste labs\\\\lambda-clone\\\\src\\\\components\\\\HardwareSection.module.css\")"
+      "Bash(Remove-Item \"d:\\\\tians\\\\Documents\\\\Desarrollador Full Stack\\\\Proyectos\\\\Assessment Taste labs\\\\lambda-clone\\\\src\\\\components\\\\HardwareSection.module.css\")",
+      "WebFetch(domain:lambdalabs.com)",
+      "Bash(New-Item -ItemType File -Force \"d:\\\\tians\\\\Documents\\\\Desarrollador Full Stack\\\\Proyectos\\\\Assessment Taste labs\\\\lambda-clone\\\\public\\\\favicon.svg\")",
+      "Bash(Out-Null)",
+      "Bash(Set-Content -Path 'd:\\\\tians\\\\Documents\\\\Desarrollador Full Stack\\\\Proyectos\\\\Assessment Taste labs\\\\lambda-clone\\\\public\\\\favicon.svg' -Encoding utf8 -Value '@ *)"
     ]
   }
 }

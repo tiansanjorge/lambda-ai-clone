@@ -60,7 +60,7 @@ export default function FeaturesSection() {
         <div className="stack--md">
 
           {/* Section heading */}
-          <div className="dark-mode titleBlock">
+          <div className="titleBlock">
             <div className="grid-x grid-margin-x">
               <div className="cell small-12 medium-7">
                 <div>
@@ -82,7 +82,7 @@ export default function FeaturesSection() {
                   return (
                     <div className="accordionItem" key={item.id}>
                       <div className="accordionItemNumberColumn">
-                        <span className={`h5 _accordionActiveItemNumber_1wr90_1${isOpen ? ' _active_1wr90_5' : ''}`} aria-hidden="true">{item.id}</span>
+                        <span className="h5 _accordionActiveItemNumber_1wr90_1" aria-hidden="true">{item.id}</span>
                       </div>
                       <div className="accordionItemContentColumn">
                         <h3 className="accordionItemHeader">

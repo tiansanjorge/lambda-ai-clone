@@ -1688,12 +1688,21 @@ h5, .h5 {
   }
   .hardwareAccordionItem {
     height: auto;
-    min-height: 300px;
     flex: none !important;
   }
+  /* Image back in normal flow — natural aspect ratio drives card height */
   .hardwareAccordionImage {
     position: relative;
-    height: 300px;
+    width: 100%;
+    mix-blend-mode: normal;
+  }
+  .hardwareAccordionImage img {
+    width: 100%;
+    height: auto;
+    object-fit: initial;
+  }
+  .hardwareAccordionItemInner {
+    height: auto;
   }
   .hardwareAccordionTextContent {
     height: auto !important;
@@ -1706,6 +1715,7 @@ h5, .h5 {
     opacity: 1;
     visibility: visible;
     transform: none;
+    transition: none;
   }
   .hardwareAccordionItemIndicator {
     display: none;
