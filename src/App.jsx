@@ -4,11 +4,11 @@ import HardwareSection from "./components/HardwareSection";
 
 function App() {
   return (
-    <>
+    <div id="top">
       <HeroSection />
       <FeaturesSection />
       <HardwareSection />
-    </>
+    </div>
   );
 }
 

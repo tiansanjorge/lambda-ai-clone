@@ -287,14 +287,14 @@ export default function HeroSection() {
       <div className="container _titleContainer_m4xpb_58">
         <div className="buttonGroup _buttonGroup_m4xpb_63" data-align="center">
           <a
-            href="/sign-up"
+            href="#top"
             className="button"
             aria-label="Launch GPU instance"
           >
             Launch GPU instance
           </a>
           <a
-            href="/talk-to-our-team"
+            href="#top"
             className="button button--secondary"
             aria-label="Talk to our team"
           >

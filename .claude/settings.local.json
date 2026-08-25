@@ -12,7 +12,8 @@
       "WebFetch(domain:lambdalabs.com)",
       "Bash(New-Item -ItemType File -Force \"d:\\\\tians\\\\Documents\\\\Desarrollador Full Stack\\\\Proyectos\\\\Assessment Taste labs\\\\lambda-clone\\\\public\\\\favicon.svg\")",
       "Bash(Out-Null)",
-      "Bash(Set-Content -Path 'd:\\\\tians\\\\Documents\\\\Desarrollador Full Stack\\\\Proyectos\\\\Assessment Taste labs\\\\lambda-clone\\\\public\\\\favicon.svg' -Encoding utf8 -Value '@ *)"
+      "Bash(Set-Content -Path 'd:\\\\tians\\\\Documents\\\\Desarrollador Full Stack\\\\Proyectos\\\\Assessment Taste labs\\\\lambda-clone\\\\public\\\\favicon.svg' -Encoding utf8 -Value '@ *)",
+      "Bash(gh repo *)"
     ]
   }
 }
